@@ -1,1 +1,1 @@
-export * from './adminhome';
+export * from './customerhome';

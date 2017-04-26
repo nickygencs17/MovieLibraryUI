@@ -8,16 +8,16 @@ import { OnInit, OnDestroy} from '@angular/core';
 import { contentHeaders } from '../common/headers';
 import { Http, Response, Headers } from '@angular/http';
 
-const styles = require('./userhome.css');
-const template = require('./userhome.html');
+const styles = require('./employeehome.css');
+const template = require('./employeehome.html');
 
 @Component({
-  selector: 'userhome',
+  selector: 'employeehome',
   template: template,
   styles: [styles],
   providers: [MyService]
 })
-export class UserHome implements OnInit, OnDestroy {
+export class EmployeeHome implements OnInit, OnDestroy {
   hero: UserName;
   public postObject: any;
   public infoObject: any;

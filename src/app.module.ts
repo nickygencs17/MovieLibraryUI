@@ -9,7 +9,8 @@ import { MyService }  from './service/myservice';
 import { DataService } from './service/dataservice';
 
 import { AuthGuard } from './common/auth.guard';
-import { UserHome } from './userhome';
+import { CustomerHome } from './customerhome';
+import { EmployeeHome } from './employeehome';
 import { AdminHome } from './adminhome';
 import { Login } from './login';
 import { Signup } from './signup';
@@ -19,7 +20,7 @@ import { routes } from './app.routes';
 
 @NgModule({
   bootstrap: [App],
-  declarations: [ AdminHome, UserHome, Login, Signup, App, EqualValidator ],
+  declarations: [ AdminHome, CustomerHome,EmployeeHome, Login, Signup, App, EqualValidator ],
   imports: [
     HttpModule, BrowserModule, FormsModule,
     RouterModule.forRoot(routes, {

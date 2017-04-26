@@ -10,8 +10,9 @@
   "files": [
     "typings/tsd.d.ts",  
     "src/app.ts",
-    "src/userhome/index.ts",
-     "src/adminhome/index.ts",
+    "src/employeehome/index.ts",
+    "src/customerhome/index.ts",
+    "src/adminhome/index.ts",
     "src/login/index.ts",
     "src/signup/index.ts",
     "src/index.ts",

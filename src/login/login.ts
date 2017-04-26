@@ -45,12 +45,12 @@ export class Login implements OnDestroy {
           } else if ( this.rank === 'ROLE_CUSTOMER') {
             this.router.navigate(['customerhome']);
           } else {
-            this.router.navigate(['userhome']);
+            this.router.navigate(['employeehome']);
           }
         },
       error => {
         console.log(error.text());
-        alert('Username/Password Bad or No Available Subscriptions: Please Contact Admin');
+        alert('Username/Password Bad');
       });
   }
 

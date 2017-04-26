@@ -7,16 +7,16 @@ import { DataService } from '../service/dataservice';
 import { OnInit} from '@angular/core';
 import { Http, Response, Headers } from '@angular/http';
 import { contentHeaders } from '../common/headers';
-const styles = require('./adminhome.css');
-const template = require('./adminhome.html');
+const styles = require('./customerhome.css');
+const template = require('./customerhome.html');
 
 @Component({
-  selector: 'adminhome',
+  selector: 'customerhome',
   template: template,
   styles: [styles],
   providers: [MyService]
 })
-export class AdminHome implements OnInit {
+export class CustomerHome implements OnInit {
   hero : UserName;
   public postObject: any;
   public infoObject: any;
