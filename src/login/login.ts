@@ -53,11 +53,6 @@ export class Login implements OnDestroy {
         alert('Username/Password Bad');
       });
   }
-
-  signup(event) {
-    event.preventDefault();
-    this.router.navigate(['signup']);
-  }
    ngOnDestroy() {
      this.dataservice.username = this.un;
      this.dataservice.password = this.pass;
