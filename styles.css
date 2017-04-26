@@ -1,0 +1,111 @@
+/* Master Styles */
+@import url('https://fonts.googleapis.com/css?family=Montserrat');
+
+body{
+  background-color:#0090B2;
+  font-size:100%
+}
+h1 {
+  color: black; 
+  font-size: 9.0vw;
+  text-align: center;
+}
+h2 {
+  color: black; 
+  font-family: 'Montserrat', sans-serif;
+  font-size: 3.0vw;
+  text-align: center;
+}
+h3 {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1.75vw;
+  text-align: center;
+}
+label {
+  color: black; 
+ font-family: 'Montserrat', sans-serif;
+  font-size: 2.0vw;
+  text-align: center;
+}
+small {
+ font-family: 'Montserrat', sans-serif;
+  font-size: 1.25vw;
+  text-align: center;
+  color:#FF490B;
+}
+
+.logInButtons{
+  margin: 0 auto; 
+  width: 50%; 
+  text-align: center;
+}
+.btn {
+  -webkit-border-radius: 16;
+  -moz-border-radius: 16;
+  border-radius: 16px;
+  font-family: 'Montserrat', sans-serif;
+  color: #00CDFF;
+  font-size: 2.5vw;
+  background: white;
+  text-decoration: none;
+  outline: none; 
+  border-style: solid;
+  border-color:white;
+  text-align: center!important;
+}
+form{
+  text-align: center;
+}
+form.label{
+  text-align: left !important;
+}
+
+.btn:hover {
+  background: BLACK;
+  color: white;
+  text-decoration: none;
+}
+input[type=text] {
+    width: 100%;
+    text-align: center;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.25vw;
+     border-radius: 16px;
+   
+   
+    
+}input[type=email] {
+    width: 100%;
+    text-align: center;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.25vw;
+     border-radius: 16px;
+   
+   
+    
+}
+input[type=number] {
+    width: 100%;
+    text-align: center;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.25vw;
+     border-radius: 16px;
+   
+   
+    
+}
+input[type=password] {
+    width: 100%;
+    text-align: center;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.25vw;
+     border-radius: 16px;
+   
+}
+.centerd{
+   width: 50%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+#foo{ color: red }

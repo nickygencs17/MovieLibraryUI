@@ -1,0 +1,51 @@
+<div>
+  <div class="home jumbotron centered">
+     <h2 style="color:blue;">Admin Home</h2>
+       <div class ="centerd">
+   
+ <div class="container">
+    <div style="text-align:center;">
+      <button class="btn btn-default"  (click)="clicked($event)">Log Out</button>
+        </div>
+   <h3>Welcome {{un}}!</h3>
+   <h3>Email: {{email}}</h3>
+    <h3>Wallet: {{walletAddress }}</h3>
+    <h3>Balance: {{balance}}</h3>
+  
+
+   <form role="form" (submit)="Purchase(purchase.value)">
+  <div class="form-group">
+    <label for="purchase" style="color:blue;"><strong>Purchase Additional Subscriptions</strong></label>
+    <input type="number" mi="1" #purchase class="form-control" id="purchase" placeholder="Purchase">
+  </div>
+
+  <br /> 
+  <button type="submit" class="btn btn-default" [disabled]="purchase.pristine">Purchase</button>
+      <br /> 
+  <br /> 
+
+</form>
+<hr>
+ 
+  <form role="form" (submit)="allocate($event, username.value)">
+  <div class="form-group">
+    <label for="username" style="color:blue;"><strong>Allocate 1 Subscription for User</strong></label>
+    <input type="text" #username class="form-control" id="username" placeholder="Username">
+  </div>
+
+  <br /> 
+  <button type="submit" class="btn btn-default" [disabled]="username.pristine">Allocate</button>
+      <br /> 
+  <br /> 
+
+
+</form>
+
+
+
+
+
+</div>
+</div>
+  </div>
+</div>

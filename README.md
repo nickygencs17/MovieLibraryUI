@@ -1,5 +1,4 @@
-# YamChain: BlockChain Proof of =Concept
-
+# Renty.IO
 ## Running it
 
 First, run the server app in the port `3000`.
@@ -14,4 +13,3 @@ Then, run `npm install` on this project and run `npm start` to start the app. Th
 Nicholas Genco
 
 
-# 305FrontEnd
