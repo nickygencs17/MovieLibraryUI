@@ -5,7 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 import { EqualValidator } from './equal-validator.directive';
 import { AUTH_PROVIDERS } from 'angular2-jwt';
-import { MyService }  from './service/myservice';
+import { MyService } from './service/myservice';
 import { DataService } from './service/dataservice';
 
 import { AuthGuard } from './common/auth.guard';
@@ -17,10 +17,37 @@ import { Signup } from './signup';
 import { App } from './app';
 
 import { routes } from './app.routes';
+import { AdminMovieServices } from './adminmovieservices';
+import { AdminEmployeeServices } from './adminemployeeservices';
+import { AdminCustomerServices } from './admincustomerservices';
+import { AdminHelpServices } from './adminhelpservices';
+import { EmployeeCustomerServices } from './employeecustomerservices';
+import { EmployeeOrderServices } from './employeeorderservices';
+import { EmployeeHelpServices } from './employeehelpservices';
+import { CustomerAccountServices } from './customeraccountservices';
+import { CustomerMovieServices } from './customermovieservices';
+import { CustomerHelpServices } from './customerhelpservices';
 
 @NgModule({
   bootstrap: [App],
-  declarations: [ AdminHome, CustomerHome,EmployeeHome, Login, Signup, App, EqualValidator ],
+  declarations:
+  [ AdminHome,
+  CustomerHome,
+  EmployeeHome,
+  Login,
+  Signup,
+  App,
+  EqualValidator,
+  AdminMovieServices,
+  AdminEmployeeServices,
+  AdminCustomerServices,
+  AdminHelpServices,
+  EmployeeCustomerServices,
+  EmployeeOrderServices,
+  EmployeeHelpServices,
+  CustomerAccountServices,
+  CustomerMovieServices,
+  CustomerHelpServices ],
   imports: [
     HttpModule, BrowserModule, FormsModule,
     RouterModule.forRoot(routes, {
@@ -30,4 +57,4 @@ import { routes } from './app.routes';
     AuthGuard, ...AUTH_PROVIDERS, MyService, DataService
   ]
 })
-export class AppModule {}
+export class AppModule { }

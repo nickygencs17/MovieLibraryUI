@@ -7,31 +7,22 @@ import { DataService } from '../service/dataservice';
 import { OnInit } from '@angular/core';
 import { Http, Response, Headers } from '@angular/http';
 import { contentHeaders } from '../common/headers';
-const styles = require('./adminhome.css');
-const template = require('./adminhome.html');
+const styles = require('./customermovieservices.css');
+const template = require('./customermovieservices.html');
 
 @Component({
-  selector: 'adminhome',
+  selector: 'customermovieservices',
   template: template,
   styles: [styles],
   providers: [MyService]
 })
-export class AdminHome {
+export class CustomerMovieServices {
   constructor(public router: Router) {
   }
   logout(event) {
     this.router.navigate(['login']);
   }
-  adminMovieServices(event) {
-    this.router.navigate(['adminmovieservices']);
-  }
-   adminEmployeeServices(event) {
-    this.router.navigate(['adminemployeeservices']);
-  }
-  adminCustomerServices(event) {
-    this.router.navigate(['admincustomerservices']);
-  }
-  adminHelpServices(event) {
-    this.router.navigate(['adminhelpservices']);
+  customerHome(event) {
+    this.router.navigate(['customerhome']);
   }
 }

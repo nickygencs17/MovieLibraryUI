@@ -6,39 +6,39 @@ body{
 }
 h1 {
   color: black; 
-  font-size: 9.0vw;
+  font-size: 8.0vw;
   text-align: left;
 }
 h2 {
   color: black; 
   font-size: 3.0vw;
-  text-align: center;
+  text-align: left;
   font-size: 2.5vw;
   text-decoration: none;
 }
 h3 {
   font-size: 1.75vw;
-  text-align: center;
+ 
   font-size: 2.5vw;
   text-decoration: none;
 }
 label {
   color: black; 
   font-size: 2.0vw;
-  text-align: center;
+
   font-size: 2.5vw;
   text-decoration: none;
 }
 small {
   font-size: 1.25vw;
-  text-align: center;
+
   color:#FF490B;
 }
 
 .logInButtons{
   margin: 0 auto; 
   width: 50%; 
-  text-align: center;
+  
 }
 .btn {
   -webkit-border-radius: 16;
@@ -50,10 +50,10 @@ small {
   outline: none; 
   border-style: solid;
   border-color:white;
-  text-align: center!important;
+
 }
 form{
-  text-align: center;
+  
 }
 form.label{
   text-align: left !important;
@@ -65,30 +65,25 @@ form.label{
   text-decoration: none;
 }
 input[type=text] {
-    width: 100%;
-    text-align: center;
-    font-size: 1.25vw;    
+    
 }
 input[type=email] {
-    width: 100%;
-    text-align: center;
-    font-size: 1.25vw;
+
    
    
     
 }
 input[type=number] {
-    width: 100%;
-    text-align: center;
-    font-size: 1.25vw;
+ 
+  
+    
    
    
     
 }
 input[type=password] {
-    width: 100%;
-    text-align: center;
-    font-size: 1.25vw;
+
+ 
    
 }
 .centerd{
@@ -98,3 +93,8 @@ input[type=password] {
   margin-right: auto;
 }
 #foo{ color: red }
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
