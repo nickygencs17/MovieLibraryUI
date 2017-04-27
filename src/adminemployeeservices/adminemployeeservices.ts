@@ -29,8 +29,10 @@ export class AdminEmployeeServices {
     this.router.navigate(['adminhome']);
   }
   addEmployee(event) {
+    this.router.navigate(['addemployee']);
   }
   editEmployee(event) {
+    this.router.navigate(['editemployee']);
   }
 
   deleteEmployee(event, employeeid) {

@@ -28,6 +28,8 @@ import { CustomerMovieServices } from './customermovieservices';
 import { CustomerHelpServices } from './customerhelpservices';
 import { AddMovie } from './addmovie';
 import { EditMovie } from './editmovie';
+import { AddEmployee } from './addemployee';
+import { EditEmployee} from './editemployee';
 
 @NgModule({
   bootstrap: [App],
@@ -49,7 +51,9 @@ import { EditMovie } from './editmovie';
   CustomerMovieServices,
   CustomerHelpServices,
   AddMovie,
-  EditMovie
+  EditMovie,
+  AddEmployee,
+  EditEmployee
   ],
   imports: [
     HttpModule, BrowserModule, FormsModule,

@@ -21,6 +21,7 @@ export class AdminMovieServices {
   public movieArray: any;
   public movieArrayType: any;
   public movieArryByCustomerName: any;
+  public movieArryMostrented: any;
   public movieByName;
   public edited = true;
 
@@ -134,6 +135,27 @@ export class AdminMovieServices {
       .subscribe((data) => {
         console.log(data);
         this.movieArryByCustomerName = data.entity;
+      },
+      error => {
+        if (error.status === 404) {
+          alert('Name Not Found');
+        } else if (error.status === 400) {
+          alert('Please Enter a Valid Name');
+        } else {
+          alert(error.text);
+        }
+      });
+  }
+    moviesMostRented(event) {
+       var authHeader = new Headers();
+    authHeader.append('Authorization', 'Basic ' +
+      btoa(this.dataservice.username + ':' + this.dataservice.password));
+    authHeader.append('Content-Type', 'application/json');
+    this.http.get(this.path + 'mostRented', { headers: authHeader })
+      .map((data) => data.json())
+      .subscribe((data) => {
+        console.log(data);
+        this.movieArryMostrented = data.entity;
       },
       error => {
         if (error.status === 404) {

@@ -1,11 +1,15 @@
+
+
+   <div style="text-align:left">
+<h2>Admin Employee Services</h2>
+</div>
 <h1>Renty.io</h1>
 <div>
- <h2>Admin Employee Services</h2>
- <div style="text-align:left">
+ <div style="text-align:center">
     <button class="btn btn-default" (click)="adminHome($event)">Admin Home</button>
-    <button class="btn btn-default" (click)="logout($event)">Log Out</button>
     <button class="btn btn-default" (click)="addEmployee($event)">Add Employee</button>
     <button class="btn btn-default" (click)="editEmployee($event)">Edit Employee</button>
+    <button class="btn btn-default" (click)="logout($event)">Log Out</button>
 
 
   </div>
@@ -16,11 +20,14 @@
     <label for="employeeid">EmployeeId:</label>
     <input type="text" #employeeid class="form-control" id="employeeid" placeholder="EmployeeId">
   </div>
+   <br />
   <button type="submit" class="btn btn-default" [disabled]="employeeid.pristine">Delete Employee</button>
   <br />
 </form>
 
- <h3>Get Employee With Most Transactions</h3> 
+ <h3>Get Employee With Most Transactions</h3>
+ <div class= "ngfordiv"> 
+ <div style="text-align:center">
 <button class="btn btn-default" (click)="getEmployeeMostTransactions($event)">Get Employee With Most Transactions</button>
 <ul [hidden]=edited>
       <li>
@@ -34,3 +41,5 @@
 
       </li>
 </ul>
+</div>
+</div>
