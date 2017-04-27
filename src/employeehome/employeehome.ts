@@ -17,85 +17,19 @@ const template = require('./employeehome.html');
   styles: [styles],
   providers: [MyService]
 })
-export class EmployeeHome implements OnInit, OnDestroy {
-  hero: UserName;
-  public postObject: any;
-  public infoObject: any;
-  public balance;
-  public walletAddress;
-  public email;
-  public un;
-  public pass;
-  public pur;
-  constructor(public router: Router,
-  public http: Http,
-  public authHttp: AuthHttp,
-  private myService: MyService,
-  private dataservice: DataService) {
+export class EmployeeHome  {
+  constructor(public router: Router) {
   }
- ngOnInit() {
-    //this.dataservice.UserName; 
-    this.makegetRequest();
-}
-ngOnDestroy(){
-  this.logout();
-  
-}
-clicked(event){
-  event.preventDefault();
- this.router.navigate(['login']);
-
-   
-}
-@HostListener('window:beforeunload')
-  doSomething() {
-    this.logout();
+  logout(event) {
+    this.router.navigate(['login']);
   }
-
-logout(){
-  var authHeader = new Headers();
-  
-  
-
-    authHeader.append('Authorization', 'Basic ' +
-      btoa(this.dataservice.username + ':' + this.dataservice.password));
-       authHeader.append('Content-Type', 'application/json');
-      let body = JSON.stringify( this.un, this.pass );
-    event.preventDefault();
-  
-     this.http.post('http://10.129.12.61:8080/logout',
-     body, { headers: authHeader})
-      .subscribe(
-      response => {
-        console.log(response.json());
-        //alert('User Created Please Login');
-       
-      },
-      error => {
-        
-        console.log(error.text());
-        alert('Error: User did not Log out  ');
-      }
-      );
-}
-makegetRequest() {
-    this.un = this.dataservice.username;
-    this.pass = this.dataservice.password;
-
-    var authHeader = new Headers();
-    authHeader.append('Authorization', 'Basic ' +
-      btoa(this.un + ':' + this.pass ));
-    event.preventDefault();
-    let body = JSON.stringify( this.un, this.pass );
-
-    this.http.get('http://10.129.12.61:8080/user/info', { headers: authHeader})
-      .map((data) => data.json())
-        .subscribe((data) => {
-          this.infoObject = data;
-           this.balance = this.infoObject.entity.balance;
-          this.walletAddress = this.infoObject.entity.walletAddress;
-           this.email = this.infoObject.entity.email;
-          
-        });
-}
+  employeeOrderServices(event) {
+    this.router.navigate(['employeeorderservices']);
+  }
+  employeeCustromerServices(event) {
+    this.router.navigate(['employeecustomerservices']);
+  }
+  employeeHelpServices(event) {
+    this.router.navigate(['employeehelpservices']);
+  }
 }

@@ -14,7 +14,6 @@
     "src/customerhome/index.ts",
     "src/adminhome/index.ts",
     "src/login/index.ts",
-    "src/signup/index.ts",
     "src/index.ts",
     "src/common/headers.ts",
     "src/common/auth.guard.ts"

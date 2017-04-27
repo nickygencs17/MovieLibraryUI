@@ -1,18 +1,22 @@
 
+
+
   <div class ="centerd">
    
  <div class="container">
- 
+ <h1>Renty.io</h1>
  
   <form role="form" (submit)="login($event, username.value, password.value)">
   <div class="form-group">
-    <label for="username">Username</label>
+    <label for="username"></label>
     <input type="text" #username class="form-control" id="username" placeholder="Username">
   </div>
   <div class="form-group">
-    <label for="password">Password</label>
+    <label for="password"></label>
     <input type="password" #password class="form-control" id="password" placeholder="Password">
   </div>
+  <br /> 
+     <br /> 
   <br /> 
   <button type="submit" class="btn btn-default" [disabled]="username.pristine || password.pristine">Submit</button>
       <br /> 

@@ -7,60 +7,45 @@ import { DataService } from '../service/dataservice';
 import { OnInit } from '@angular/core';
 import { Http, Response, Headers } from '@angular/http';
 import { contentHeaders } from '../common/headers';
-const styles = require('./adminhome.css');
-const template = require('./adminhome.html');
+const styles = require('./admincustomerservices.css');
+const template = require('./admincustomerservices.html');
 
 @Component({
-  selector: 'adminhome',
+  selector: 'admincustomerservices',
   template: template,
   styles: [styles],
   providers: [MyService]
 })
-export class AdminHome {
+export class AdminCustomerServices {
+  public customerArray: any;
   public path = 'http://localhost:8080/storage/manager/';
-  public salesReportTotal;
-   public edited = true;
   constructor(public router: Router, public http: Http, public dataservice: DataService) {
   }
   logout(event) {
     this.router.navigate(['login']);
   }
-  adminMovieServices(event) {
-    this.router.navigate(['adminmovieservices']);
+  adminHome(event) {
+    this.router.navigate(['adminhome']);
   }
-   adminEmployeeServices(event) {
-    this.router.navigate(['adminemployeeservices']);
-  }
-  adminCustomerServices(event) {
-    this.router.navigate(['admincustomerservices']);
-  }
-  adminHelpServices(event) {
-    this.router.navigate(['adminhelpservices']);
-  }
-  getSalesReport(event, month) {
+  getMostActiveCustomers(event) {
     var authHeader = new Headers();
     authHeader.append('Authorization', 'Basic ' +
       btoa(this.dataservice.username + ':' + this.dataservice.password));
     authHeader.append('Content-Type', 'application/json');
-    this.http.get(this.path + 'sales/' + month, { headers: authHeader })
+    this.http.get(this.path + 'mostTransactions', { headers: authHeader })
       .map((data) => data.json())
       .subscribe((data) => {
-        console.log(data);
-        this.salesReportTotal = data.entity.toString();
+        this.customerArray = data.entity;
       },
       error => {
-        if (error.status === 404) {
-          alert('Movie Name Not Found');
+        if (error.status === 401) {
+          alert('Please Log In');
         } else if (error.status === 400) {
-          alert('Please Enter a Valid Interger');
-        } else if (error.status === 401) {
-          alert('Please Enter a Valid Interger');
-        } else if (error.status === 500) {
-          alert('Please Enter a Valid Interger');
+          alert('Please Enter a Valid Movie Id');
         } else {
-          alert('Uknown Error Check Log');
+          alert(error.text);
         }
       });
-    this.edited = false;
   }
 }
+

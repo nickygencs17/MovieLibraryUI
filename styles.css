@@ -1,59 +1,66 @@
 /* Master Styles */
 
 body{
-  background-color:#0090B2;
-  font-size:100%
+  background-image: url("back1.jpg");
+    background-color: #cccccc;
 }
 h1 {
-  color: black; 
-  font-size: 9.0vw;
-  text-align: left;
+  color: white; 
+  font-size: 8.0vw;
+  text-align: center;
 }
 h2 {
-  color: black; 
+  color: white; 
   font-size: 3.0vw;
-  text-align: center;
+  text-align: left;
   font-size: 2.5vw;
   text-decoration: none;
 }
 h3 {
   font-size: 1.75vw;
-  text-align: center;
+  color: white; 
   font-size: 2.5vw;
   text-decoration: none;
+  text-align: center;
 }
 label {
-  color: black; 
+  color: white; 
   font-size: 2.0vw;
-  text-align: center;
+
   font-size: 2.5vw;
   text-decoration: none;
 }
 small {
   font-size: 1.25vw;
-  text-align: center;
+
   color:#FF490B;
 }
 
 .logInButtons{
   margin: 0 auto; 
   width: 50%; 
+  
+}
+div.ngfordiv{
   text-align: center;
+  color: white;
 }
 .btn {
   -webkit-border-radius: 16;
   -moz-border-radius: 16;
-  color: #00CDFF;
+  color: black;
   font-size: 2.5vw;
   background: white;
   text-decoration: none;
   outline: none; 
   border-style: solid;
   border-color:white;
-  text-align: center!important;
+  text-align: center;
+
 }
 form{
   text-align: center;
+  
 }
 form.label{
   text-align: left !important;
@@ -65,30 +72,25 @@ form.label{
   text-decoration: none;
 }
 input[type=text] {
-    width: 100%;
     text-align: center;
-    font-size: 1.25vw;    
 }
 input[type=email] {
-    width: 100%;
-    text-align: center;
-    font-size: 1.25vw;
-   
+
+   text-align: center;
    
     
 }
 input[type=number] {
-    width: 100%;
-    text-align: center;
-    font-size: 1.25vw;
-   
+ 
+  
+    
+   text-align: center;
    
     
 }
 input[type=password] {
-    width: 100%;
-    text-align: center;
-    font-size: 1.25vw;
+
+ text-align: center;
    
 }
 .centerd{
@@ -98,3 +100,8 @@ input[type=password] {
   margin-right: auto;
 }
 #foo{ color: red }
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}

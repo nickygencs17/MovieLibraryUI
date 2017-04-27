@@ -1,0 +1,31 @@
+   <div style="text-align:left">
+<h2>Admin Customer Services</h2>
+</div>
+
+<h1>Renty.io</h1>
+<div>
+        <div style="text-align:center">
+          <button class="btn btn-default" (click)="adminHome($event)">Admin Home</button>
+          <button class="btn btn-default" (click)="logout($event)">Log Out</button>
+        </div>
+      </div>
+<h3>Get Most Active Customers</h3>
+<div style="text-align:center">
+  <div class= "ngfordiv"> 
+<button class="btn btn-default" (click)="getMostActiveCustomers($event)">Get Most Active Customers</button>
+<ul>
+   
+      <li *ngFor="let customer of customerArray">
+       
+        <br />
+                  ID:{{customer.id}} <br />
+                  Firstname:{{customer.customer.firstname}}<br />
+                  Lastname:{{customer.customer.lastname}}<br />
+                  Location{{customer.customer.location.city}}<br />
+                  Email:{{customer.email}} <br />
+                  CCN:{{customer.creditcardnumber}} <br />
+      </li>
+</ul>
+  
+</div>
+</div>

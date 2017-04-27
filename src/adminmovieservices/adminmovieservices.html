@@ -1,0 +1,146 @@
+
+   <div style="text-align:left">
+<h2>Admin Movie Services</h2>
+</div>
+
+<h1>Renty.io</h1>
+<div>
+
+
+  <div style="text-align:center">
+    <button class="btn btn-default" (click)="adminHome($event)">Admin Home</button>
+    <button class="btn btn-default" (click)="addMovie($event)">Add Movie</button>
+    <button class="btn btn-default" (click)="editMovie($event)">Edit Movie</button>
+    <button class="btn btn-default" (click)="logout($event)">Log Out</button>
+
+
+  </div>
+</div>
+<h3>Delete Movie By Id</h3>
+<form role="form" (submit)="deleteMovie($event, movieid.value)">
+  <div class="form-group">
+    <label for="movieid">MovieId:</label>
+    <input type="text" #movieid class="form-control" id="movieid" placeholder="MovieId">
+  </div>
+  <br />
+  <br />
+  <button type="submit" class="btn btn-default" [disabled]="movieid.pristine">Delete Movie</button>
+  <br />
+</form>
+<h3>All Movies</h3>
+<div style="text-align:center">
+
+<button class="btn btn-default" (click)="getAllMovies($event)">Get All Movies</button>
+</div>
+<div class= "ngfordiv"> 
+<ul>
+   
+      <li *ngFor="let movie of movieArray">
+       
+        <br />
+                  ID:{{movie.id}} <br />
+                  Name:{{movie.name}} <br />
+                  Type:{{movie.type}} <br />
+                  Rating:{{movie.rating}} <br />
+                  Distribution Fee:{{movie.distrfee}} <br />
+                  Number Of Copies:{{movie.numcopies}} <br />
+      </li>
+</ul>
+</div>
+<h3>Movies By Type</h3>
+<form role="form" (submit)="moviesByType($event, type.value)">
+  <div class="form-group">
+    <label for="type">Type:</label>
+    <input type="text" #type class="form-control" id="type" placeholder="Type">
+  </div>
+  <br />
+  <br />
+  <button type="submit" class="btn btn-default" [disabled]="type.pristine">Get Movies by Type</button>
+  <br />
+</form>
+<div class= "ngfordiv"> 
+<ul>
+   
+      <li *ngFor="let movie of movieArrayType">
+       
+        <br />
+                  ID:{{movie.id}} <br />
+                  Name:{{movie.name}} <br />
+                  Type:{{movie.type}} <br />
+                  Rating:{{movie.rating}} <br />
+                  Distribution Fee:{{movie.distrfee}} <br />
+                  Number Of Copies:{{movie.numcopies}} <br />
+      </li>
+</ul>
+</div>
+<h3>Movie by Name</h3>
+<form role="form" (submit)="moviesByName($event, name.value)">
+  <div class="form-group">
+    <label for="name">Name:</label>
+    <input type="text" #name class="form-control" id="name" placeholder="Name">
+  </div>
+  <br />
+  <br />
+  <button type="submit" class="btn btn-default" [disabled]="name.pristine">Get Movie Name</button>
+  <br />
+</form>
+<div class= "ngfordiv"> 
+<ul [hidden]=edited>
+      <li>
+        <br />
+                  ID:{{movieByName?.id}} <br />
+                  Name:{{movieByName?.name}} <br />
+                  Type:{{movieByName?.type}} <br />
+                  Rating:{{movieByName?.rating}} <br />
+                  Distribution Fee:{{movieByName?.distrfee}} <br />
+                  Number Of Copies:{{movieByName?.numcopies}} <br />
+      </li>
+</ul>
+<br />
+</div>
+ <h3>Movies By Customer Name</h3>
+<form role="form" (submit)="moviesByCustomerName($event, firstname.value, lastname.value)">
+  <div class="form-group">
+    <label for="firstname">FirstName:</label>
+    <input type="text" #firstname class="form-control" id="firstname" placeholder="FirstName">
+     <br />
+      <br />
+    <label for="lastname">LastName:</label>
+    <input type="type" #lastname class="form-control" id="lastname" placeholder="LastName">
+  </div>
+  <br />
+  <br />
+  <button type="submit" class="btn btn-default" [disabled]="firstname.pristine || lastname.pristine">Get Movies by Customer Name</button>
+  <br />
+</form>
+<div class= "ngfordiv"> 
+<ul>
+      <li *ngFor="let movie of movieArryByCustomerName">
+       
+        <br />
+                  ID:{{movie.id}} <br />
+                  Name:{{movie.name}} <br />
+                  Type:{{movie.type}} <br />
+                  Rating:{{movie.rating}} <br />
+                  Distribution Fee:{{movie.distrfee}} <br />
+                  Number Of Copies:{{movie.numcopies}} <br />
+      </li>
+</ul>
+</div>
+<h3>Most Activitly Rented Movies</h3>
+<div class= "ngfordiv"> 
+ <button class="btn btn-default" (click)="moviesMostRented(event)">Get Most Activitly Rented Movies</button>
+
+<ul>
+      <li *ngFor="let movie of movieArryMostrented">
+       
+        <br />
+                  ID:{{movie.id}} <br />
+                  Name:{{movie.name}} <br />
+                  Type:{{movie.type}} <br />
+                  Rating:{{movie.rating}} <br />
+                  Distribution Fee:{{movie.distrfee}} <br />
+                  Number Of Copies:{{movie.numcopies}} <br />
+      </li>
+</ul>
+</div>
