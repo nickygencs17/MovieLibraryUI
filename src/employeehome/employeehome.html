@@ -1,7 +1,13 @@
+ <div style="text-align:left">
+<h2>Employee Home</h2>
+</div>
+
 <h1>Renty.io</h1>
 <div>
- <h2>Employee Home</h2>
-        <div style="text-align:left">
+ 
+
+  
+        <div style="text-align:center">
           <button class="btn btn-default" (click)="employeeOrderServices($event)">Employee Order Services</button>
           <button class="btn btn-default" (click)="employeeCustromerServices($event)">Employee Customer Services</button>
           <button class="btn btn-default" (click)="employeeHelpServices($event)"> Employee Help Services</button>
@@ -9,3 +15,23 @@
         </div>
       </div>
 
+   <br />
+      <br />
+         <br />
+<div class= "ngfordiv"> 
+  <button class="btn btn-default" (click)="getMailingList($event)">Get Customer Mailing Lists</button>
+  <br />
+<ul>
+   
+      <li *ngFor="let customer of customerMailingList">
+       
+        <br />
+                  FirstName:{{customer.customer.firstname}} <br />
+                  LastName:{{customer.customer.lastname}} <br />
+                  Address:{{customer.customer.address}} <br />
+                  City:{{customer.customer.location.city}} <br />
+                  State:{{customer.customer.location.state}} <br />
+                  Zip:{{customer.customer.location.zipcode}} <br />
+      </li>
+</ul>
+</div>

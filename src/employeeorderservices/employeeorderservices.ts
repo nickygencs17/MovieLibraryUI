@@ -16,14 +16,92 @@ const template = require('./employeeorderservices.html');
   styles: [styles],
   providers: [MyService]
 })
-export class EmployeeOrderServices {
-  constructor(public router: Router) {
+ export class EmployeeOrderServices {
+
+
+
+  public order: any;
+  public orderID;
+  public rentalNode: any;
+  public succesful = false;
+  constructor(public router: Router, public http: Http, public dataservice: DataService) {
   }
   logout(event) {
     this.router.navigate(['login']);
   }
   employeeHome(event) {
     this.router.navigate(['employeehome']);
+  }
+
+  addOrder($event, orderdate, customerRep, movieID, accountNumber) {
+       this.order = {
+         datetime: orderdate,
+         id: 0,
+         returndate: null
+       };
+       console.log('here');
+       this.postOrder(customerRep, movieID, accountNumber);
+  }
+  postOrder(customerRep, movieID, accountNumber) {
+
+    var authHeader = new Headers();
+    authHeader.append('Authorization', 'Basic ' +
+      btoa(this.dataservice.username + ':' + this.dataservice.password));
+    authHeader.append('Content-Type', 'application/json');
+    let body = this.order;
+    event.preventDefault();
+    this.http.post('http://localhost:8080/storage/employee/order',
+      body, { headers: authHeader })
+      .map((data) => data.json())
+        .subscribe((data) => {
+          this.orderID = data.entity;
+           console.log(this.orderID);
+      this.rentalNode = {
+        accountNumber: accountNumber,
+        employeeID: customerRep,
+        movieID: movieID,
+        orderNumber: this.orderID
+      };
+
+      console.log(this.rentalNode);
+
+      if ( this.succesful =  true) {
+        this.postRental();
+      }
+        },
+      error => {
+        console.log(error.text());
+        alert(`{
+                  "datetime": "date",
+                  "id": 0,
+                  "returndate": "date"
+            }`);
+      }
+      );
+  }
+  postRental() {
+
+    var authHeader = new Headers();
+    authHeader.append('Authorization', 'Basic ' +
+      btoa(this.dataservice.username + ':' + this.dataservice.password));
+    authHeader.append('Content-Type', 'application/json');
+    let body = this.rentalNode;
+    event.preventDefault();
+    this.http.post('http://localhost:8080/storage/employee/rental',
+      body, { headers: authHeader })
+      .map((data) => data.json())
+        .subscribe((data) => {
+          alert('created');
+        },
+      error => {
+        console.log(error.text());
+        alert(`{
+                  "datetime": "date",
+                  "id": 0,
+                  "returndate": "date"
+            }`);
+      }
+      );
   }
 }
 
