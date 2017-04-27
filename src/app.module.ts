@@ -13,7 +13,6 @@ import { CustomerHome } from './customerhome';
 import { EmployeeHome } from './employeehome';
 import { AdminHome } from './adminhome';
 import { Login } from './login';
-import { Signup } from './signup';
 import { App } from './app';
 
 import { routes } from './app.routes';
@@ -37,7 +36,6 @@ import { EditMovie } from './editmovie';
   CustomerHome,
   EmployeeHome,
   Login,
-  Signup,
   App,
   EqualValidator,
   AdminMovieServices,

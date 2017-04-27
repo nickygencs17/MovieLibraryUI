@@ -1,30 +1,36 @@
+ <div style="text-align:left">
+<h2>Admin Home</h2>
+</div>
+
 <h1>Renty.io</h1>
 <div>
- <h2>Admin Home</h2>
+ 
 
   
-        <div style="text-align:left">
+        <div style="text-align:center">
           <button class="btn btn-default" (click)="adminMovieServices($event)">Movie Services</button>
           <button class="btn btn-default" (click)="adminEmployeeServices($event)">Employee Services</button>
           <button class="btn btn-default" (click)="adminCustomerServices($event)">Customer Services</button>
           <button class="btn btn-default" (click)="adminHelpServices($event)">Help</button>
           <button class="btn btn-default" (click)="logout($event)">Log Out</button>
         </div>
-      </div>
+      
       <h3>Sales Report:</h3>
 <form role="form" (submit)="getSalesReport($event, month.value)">
   <div class="form-group">
     <label for="month">Month:</label>
-    <input type="text" #month class="form-control" id="month" placeholder="MovieId">
+    <input type="text" #month class="form-control" id="month" placeholder="Month">
   </div>
+  <br /><br />
   <button type="submit" class="btn btn-default" [disabled]="month.pristine">Get Sales Report</button>
   <br />
 </form>
 
-<div [hidden]=edited>
-                <h2>Total for that Month: {{salesReportTotal}}</h2>
-     
-</div>
+<div class= "ngfordiv" [hidden]=edited>
+
+                <h2 style="text-align: center">Total for that Month: {{salesReportTotal}}</h2>
+     </div>
+
 
 
   

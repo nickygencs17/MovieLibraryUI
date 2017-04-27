@@ -16,6 +16,7 @@ const template = require('./editmovie.html');
 export class EditMovie {
   public movie: Movie;
   public movieByID: Movie;
+   public edited = true;
   public path = 'http://localhost:8080/storage/manager/';
   constructor(public router: Router, public http: Http, public dataservice: DataService) { }
 
@@ -27,7 +28,7 @@ export class EditMovie {
     authHeader.append('Authorization', 'Basic ' +
       btoa(this.dataservice.username + ':' + this.dataservice.password));
     authHeader.append('Content-Type', 'application/json');
-    this.http.get(this.path + 'movies/name/' + movieID, { headers: authHeader })
+    this.http.get(this.path + 'movie/' + movieID, { headers: authHeader })
       .map((data) => data.json())
       .subscribe((data) => {
         console.log(data);
@@ -44,32 +45,37 @@ export class EditMovie {
           alert(error.text);
         }
       });
+      this.edited = false;
 
   }
-  putMovie($event, id, name, distrfee, type, numcopies, rating) {
+  putMovie(event, id, name, distrfee, type, numcopies, rating) {
+
     this.movie = {
-      distrfee: distrfee.parseInt,
-      id: id.parseInt,
+      distrfee: parseInt(distrfee),
+      id: parseInt(id),
       name: name,
-      numcopies: numcopies.parseInt,
-      rating: rating.parseInt,
+      numcopies: parseInt(numcopies),
+      rating: parseInt(rating),
       type: type
     };
-    this.postMethod();
+    this.putMethod();
   }
 
-  postMethod() {
+  putMethod() {
+
+    console.log(this.movie);
     var authHeader = new Headers();
     authHeader.append('Authorization', 'Basic ' +
       btoa(this.dataservice.username + ':' + this.dataservice.password));
     authHeader.append('Content-Type', 'application/json');
     let body = this.movie;
     event.preventDefault();
-    this.http.post('http://localhost:8080/storage/manager/movie',
+    this.http.put('http://localhost:8080/storage/manager/editMovies',
       body, { headers: authHeader })
       .subscribe(
       response => {
         console.log(response.json());
+        alert('Edited');
       },
       error => {
         console.log(error.text());

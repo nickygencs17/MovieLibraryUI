@@ -1,16 +1,16 @@
 /* Master Styles */
 
 body{
-  background-color:#0090B2;
-  font-size:100%
+  background-image: url("back1.jpg");
+    background-color: #cccccc;
 }
 h1 {
-  color: black; 
+  color: white; 
   font-size: 8.0vw;
-  text-align: left;
+  text-align: center;
 }
 h2 {
-  color: black; 
+  color: white; 
   font-size: 3.0vw;
   text-align: left;
   font-size: 2.5vw;
@@ -18,12 +18,13 @@ h2 {
 }
 h3 {
   font-size: 1.75vw;
- 
+  color: white; 
   font-size: 2.5vw;
   text-decoration: none;
+  text-align: center;
 }
 label {
-  color: black; 
+  color: white; 
   font-size: 2.0vw;
 
   font-size: 2.5vw;
@@ -40,19 +41,25 @@ small {
   width: 50%; 
   
 }
+div.ngfordiv{
+  text-align: center;
+  color: white;
+}
 .btn {
   -webkit-border-radius: 16;
   -moz-border-radius: 16;
-  color: #00CDFF;
+  color: black;
   font-size: 2.5vw;
   background: white;
   text-decoration: none;
   outline: none; 
   border-style: solid;
   border-color:white;
+  text-align: center;
 
 }
 form{
+  text-align: center;
   
 }
 form.label{
@@ -65,11 +72,11 @@ form.label{
   text-decoration: none;
 }
 input[type=text] {
-    
+    text-align: center;
 }
 input[type=email] {
 
-   
+   text-align: center;
    
     
 }
@@ -77,13 +84,13 @@ input[type=number] {
  
   
     
-   
+   text-align: center;
    
     
 }
 input[type=password] {
 
- 
+ text-align: center;
    
 }
 .centerd{

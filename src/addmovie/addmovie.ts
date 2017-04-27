@@ -23,9 +23,9 @@ export class AddMovie {
   }
 
 
-  addMovie($event, id, name, distributionfee, type, numcopies, rating) {
+  addMovie($event, name, distributionfee, type, numcopies, rating) {
     this.movie = {
-      id: parseInt(id),
+      id: 0,
       name: name,
       numcopies: parseInt(numcopies),
       rating: parseInt(rating),
@@ -47,6 +47,7 @@ export class AddMovie {
       .subscribe(
       response => {
         console.log(response.json());
+        alert('Created');
       },
       error => {
         console.log(error.text());
