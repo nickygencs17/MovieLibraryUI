@@ -27,6 +27,8 @@ import { EmployeeHelpServices } from './employeehelpservices';
 import { CustomerAccountServices } from './customeraccountservices';
 import { CustomerMovieServices } from './customermovieservices';
 import { CustomerHelpServices } from './customerhelpservices';
+import { AddMovie } from './addmovie';
+import { EditMovie } from './editmovie';
 
 @NgModule({
   bootstrap: [App],
@@ -47,7 +49,10 @@ import { CustomerHelpServices } from './customerhelpservices';
   EmployeeHelpServices,
   CustomerAccountServices,
   CustomerMovieServices,
-  CustomerHelpServices ],
+  CustomerHelpServices,
+  AddMovie,
+  EditMovie
+  ],
   imports: [
     HttpModule, BrowserModule, FormsModule,
     RouterModule.forRoot(routes, {

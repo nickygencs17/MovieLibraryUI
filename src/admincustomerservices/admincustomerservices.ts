@@ -17,7 +17,9 @@ const template = require('./admincustomerservices.html');
   providers: [MyService]
 })
 export class AdminCustomerServices {
-  constructor(public router: Router) {
+  public customerArray: any;
+  public path = 'http://localhost:8080/storage/manager/';
+  constructor(public router: Router, public http: Http, public dataservice: DataService) {
   }
   logout(event) {
     this.router.navigate(['login']);
@@ -25,4 +27,25 @@ export class AdminCustomerServices {
   adminHome(event) {
     this.router.navigate(['adminhome']);
   }
+  getMostActiveCustomers(event) {
+    var authHeader = new Headers();
+    authHeader.append('Authorization', 'Basic ' +
+      btoa(this.dataservice.username + ':' + this.dataservice.password));
+    authHeader.append('Content-Type', 'application/json');
+    this.http.get(this.path + 'mostTransactions', { headers: authHeader })
+      .map((data) => data.json())
+      .subscribe((data) => {
+        this.customerArray = data.entity;
+      },
+      error => {
+        if (error.status === 401) {
+          alert('Please Log In');
+        } else if (error.status === 400) {
+          alert('Please Enter a Valid Movie Id');
+        } else {
+          alert(error.text);
+        }
+      });
+  }
 }
+

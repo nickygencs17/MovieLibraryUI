@@ -33,10 +33,10 @@ export class AdminMovieServices {
     this.router.navigate(['adminhome']);
   }
   addMovie(event) {
-    //anotherpagewithform
+    this.router.navigate(['addmovie']);
   }
   editMovie(event) {
-    //anotherpagewithformfilledin
+    this.router.navigate(['editmovie']);
   }
   deleteMovie(event, movieid) {
     var authHeader = new Headers();
@@ -114,7 +114,9 @@ export class AdminMovieServices {
         if (error.status === 404) {
           alert('Movie Name Not Found');
         } else if (error.status === 400) {
-          alert('Please Enter a Valid Movie Id');
+          alert('Please Enter a Valid Name');
+        } else if (error.status === 500) {
+          alert('Please Enter a Valid Name');
         } else {
           alert(error.text);
         }
@@ -135,9 +137,9 @@ export class AdminMovieServices {
       },
       error => {
         if (error.status === 404) {
-          alert('Movie Name Not Found');
+          alert('Name Not Found');
         } else if (error.status === 400) {
-          alert('Please Enter a Valid Movie Id');
+          alert('Please Enter a Valid Name');
         } else {
           alert(error.text);
         }

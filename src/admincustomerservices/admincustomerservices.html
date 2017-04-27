@@ -6,5 +6,19 @@
           <button class="btn btn-default" (click)="logout($event)">Log Out</button>
         </div>
       </div>
-
+<h3>Get Most Active Customers</h3>
+<button class="btn btn-default" (click)="getMostActiveCustomers($event)">Get Most Active Customers</button>
+<ul>
+   
+      <li *ngFor="let customer of customerArray">
+       
+        <br />
+                  ID:{{customer.id}} <br />
+                  Firstname:{{customer.customer.firstname}}<br />
+                  Lastname:{{customer.customer.lastname}}<br />
+                  Location{{customer.customer.location.city}}<br />
+                  Email:{{customer.email}} <br />
+                  CCN:{{customer.creditcardnumber}} <br />
+      </li>
+</ul>
   

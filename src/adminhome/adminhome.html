@@ -11,5 +11,20 @@
           <button class="btn btn-default" (click)="logout($event)">Log Out</button>
         </div>
       </div>
+      <h3>Sales Report:</h3>
+<form role="form" (submit)="getSalesReport($event, month.value)">
+  <div class="form-group">
+    <label for="month">Month:</label>
+    <input type="text" #month class="form-control" id="month" placeholder="MovieId">
+  </div>
+  <button type="submit" class="btn btn-default" [disabled]="month.pristine">Get Sales Report</button>
+  <br />
+</form>
+
+<div [hidden]=edited>
+                <h2>Total for that Month: {{salesReportTotal}}</h2>
+     
+</div>
+
 
   

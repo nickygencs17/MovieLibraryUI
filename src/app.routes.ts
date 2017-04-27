@@ -16,6 +16,8 @@ import { EmployeeHelpServices } from './employeehelpservices';
 import { CustomerAccountServices } from './customeraccountservices';
 import { CustomerMovieServices } from './customermovieservices';
 import { CustomerHelpServices } from './customerhelpservices';
+import { AddMovie } from './addmovie';
+import { EditMovie } from './editmovie';
 
 export const routes: Routes = [
   { path: '',       component: Login },
@@ -34,6 +36,8 @@ export const routes: Routes = [
   { path: 'customeraccountservices', component: CustomerAccountServices},
   { path: 'customermovieservices',    component: CustomerMovieServices},
   { path: 'customerhelpservices',    component: CustomerHelpServices},
+  { path: 'addmovie',    component: AddMovie},
+  { path: 'editmovie',    component: EditMovie},
   { path: '**',     component: Login }
 
 

@@ -1,0 +1,45 @@
+
+<div class="container">
+
+
+
+  <form role="form" (submit)="addMovie($event, id.value, name.value, distrfee.value,type.value, numcopies.value, rating.value)">
+    <div class="form-group">
+      <label for="id">ID</label>
+      <input type="text" #id class="form-control" id="id" placeholder="MovieId">
+    
+    </div>
+    <div class="form-group">
+      <label for="name">Name</label>
+      <input type="text" #name class="form-control" id="name" placeholder="MovieName">
+     
+    </div>
+    <div class="form-group">
+      <label for="distrfee">Distribution</label>
+      <input type="number" #distrfee class="form-control" id="distrfee" placeholder="Distribution Fee">
+    </div>
+    <div class="form-group">
+      <label for="type">Type</label>
+      <input type="text" #type class="form-control" id="type" placeholder="Type">
+    </div>
+       <div class="form-group">
+      <label for="numcopies">Number Of Copies</label>
+      <input type="number" #numcopies class="form-control" id="numcopies" placeholder="Number Of Copies">
+     
+    </div>
+       <div class="form-group">
+      <label for="rating">Rating</label>
+      <input type="number" #rating class="form-control" id="rating" placeholder="Rating">
+    </div>
+    
+    
+   <br /> 
+  <br />     
+<button type="submit" class="btn btn-default" [disabled]="(id.pristine)">Submit</button>
+  </form>
+  <button class="btn btn-default" (click)="adminMovieServices($event)">Back</button>
+
+
+
+
+
