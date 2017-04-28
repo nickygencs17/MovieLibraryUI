@@ -1,8 +1,6 @@
-
-
 import { Location } from './location';
 
-export interface Employee {
+export interface Customer {
   address: string;
   firstname: string;
   lastname: string;

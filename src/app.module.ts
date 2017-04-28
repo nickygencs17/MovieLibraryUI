@@ -30,6 +30,8 @@ import { AddMovie } from './addmovie';
 import { EditMovie } from './editmovie';
 import { AddEmployee } from './addemployee';
 import { EditEmployee} from './editemployee';
+import { AddCustomer } from './addcustomer';
+import { EditCustomer} from './editcustomer';
 
 @NgModule({
   bootstrap: [App],
@@ -53,7 +55,9 @@ import { EditEmployee} from './editemployee';
   AddMovie,
   EditMovie,
   AddEmployee,
-  EditEmployee
+  EditEmployee,
+  AddCustomer,
+  EditCustomer
   ],
   imports: [
     HttpModule, BrowserModule, FormsModule,

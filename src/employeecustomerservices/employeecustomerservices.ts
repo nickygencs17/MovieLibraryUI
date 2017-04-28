@@ -17,7 +17,11 @@ const template = require('./employeecustomerservices.html');
   providers: [MyService]
 })
 export class EmployeeCustomerServices {
-  constructor(public router: Router) {
+  public path = 'http://localhost:8080/storage/employee/';
+  public employeeMost;
+  public edited = true;
+  public movieArray: any;
+  constructor(public router: Router, public http: Http, public dataservice: DataService) {
   }
   logout(event) {
     this.router.navigate(['login']);
@@ -25,5 +29,53 @@ export class EmployeeCustomerServices {
   employeeHome(event) {
     this.router.navigate(['employeehome']);
   }
-}
+  addCustomer(event) {
+    this.router.navigate(['addcustomer']);
+  }
+  editCustomer(event) {
+    this.router.navigate(['editcustomer']);
+  }
+  deleteCustomer(event, customerid) {
+    var authHeader = new Headers();
+    authHeader.append('Authorization', 'Basic ' +
+      btoa(this.dataservice.username + ':' + this.dataservice.password));
+    authHeader.append('Content-Type', 'application/json');
+    this.http.delete(this.path +  customerid, { headers: authHeader })
+      .map((data) => data.json())
+      .subscribe((data) => {
+        alert(customerid + ' has been deleted.');
+      },
+      error => {
+        if (error.status === 404) {
+          alert('Movie Not Found');
+        } else if (error.status === 400) {
+          alert('Please Enter a Valid Customer Id');
+        } else {
+          alert(error.text);
+        }
 
+      });
+  }
+  moviesByCustomerId(event, customerid) {
+       var authHeader = new Headers();
+    authHeader.append('Authorization', 'Basic ' +
+      btoa(this.dataservice.username + ':' + this.dataservice.password));
+    authHeader.append('Content-Type', 'application/json');
+    this.http.get(this.path + 'recommendation/' + customerid, { headers: authHeader })
+      .map((data) => data.json())
+      .subscribe((data) => {
+        console.log(data);
+        this.movieArray = data.entity;
+      },
+      error => {
+        if (error.status === 404) {
+          alert('Name Not Found');
+        } else if (error.status === 400) {
+          alert('Please Enter a Valid Name');
+        } else {
+          alert(error.text);
+        }
+      });
+  }
+
+}

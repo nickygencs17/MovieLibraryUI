@@ -1,0 +1,110 @@
+  <div style="text-align:left">
+<h2>Edit a Customer</h2>
+<button class="btn btn-default" (click)="employeeCustomerServices($event)">Back</button>
+</div>
+ <h3>Get The Customer By Id:</h3>
+<form role="form" (submit)="getCustomerbyID($event, customerID.value)">
+  <div class="form-group">
+    <label for="customerID">Customer ID:</label>
+    <input type="text" #customerID class="form-control" id="customerID" placeholder="Customer Id">
+  </div>
+  <br />
+
+  <button type="submit" class="btn btn-default" [disabled]="customerID.pristine">Get Customer</button>
+
+</form>
+<div class= "ngfordiv"> 
+<ul [hidden]=edited>
+      <li>
+        <br />
+                  ID:{{customerById?.id}} <br />
+                  Firstname:{{customerById?.customer.firstname}}<br />
+                  Lastname:{{customerById?.customer.lastname}}<br />
+                  Address:{{customerById?.customer.address}}<br />
+                  City:{{customerById?.customer.location.city}}<br />
+                  State:{{customerById?.customer.location.state}}<br />
+                  Zipcode:{{customerById?.customer.location.zipcode}}<br />
+                  Password:{{customerById?.customer.password}}<br />
+                  Credit Card Number:{{customerById?.creditcardnumber}} <br />
+                  SSN:{{customerById?.ssn}} <br />
+                  Email:{{customerById?.email}} <br />
+                  Telephone:{{customerById?.customer.telephone}} <br />
+                  Rating:{{customerById?.rating}} <br />
+
+      </li>
+</ul>
+</div>
+
+
+<h3>Edit Info:</h3>
+
+
+  <form role="form" 
+  (submit)="editCustomer($event, firstname.value, lastname.value, 
+  address.value, city.value, state.value, creditcardnumber.value, zipcode.value, password.value,ssn.value, telephone.value, email.value, rating.value )">
+    <div class="form-group">
+       <div class="form-group">
+      <input type="number" #ssn class="form-control" id="ssn" placeholder="SSN/ID">
+     
+    </div>
+      <input type="text" #firstname class="form-control" id="firstname " placeholder="First Name">
+     
+    </div>
+    <br /> 
+      <div class="form-group">
+      <input type="text" #lastname class="form-control" id="lastname" placeholder="Last Name">
+     
+    </div>
+    <br /> 
+     <div class="form-group">
+      <input type="text" #address class="form-control" id="address" placeholder="Address">
+     
+    </div>
+    <br /> 
+      <div class="form-group">
+      <input type="text" #city class="form-control" id="city" placeholder="City">
+     
+    </div>
+    <br /> 
+        <div class="form-group">
+      <input type="text" #state class="form-control" id="state" placeholder="State">
+     
+    </div>
+    <br /> 
+     <div class="form-group">
+      <input type="number" #zipcode class="form-control" id="zipcode" placeholder="Zip Code">
+     
+    </div>
+    <br /> 
+      <div class="form-group">
+      <input type="password" #password class="form-control" id="password" placeholder="Password">
+     
+    </div>
+    <br /> 
+      <div class="form-group">
+      <input type="number" #telephone class="form-control" id="telephone" placeholder="Telephone">
+     
+    </div>
+    <br /> 
+      <div class="form-group">
+      <input type="number" #creditcardnumber class="form-control" id="creditcardnumber" placeholder="Credit Card Number">
+     
+    </div>
+      <br /> 
+        <div class="form-group">
+      <input type="text" #email class="form-control" id="email" placeholder="Email">
+     
+    </div>
+     <br /> 
+      <div class="form-group">
+      <input type="number" #rating class="form-control" id="rating" placeholder="Rating">
+     
+    </div>
+
+  <br /> 
+   <br /> 
+ 
+ 
+ 
+<button type="submit" class="btn btn-default" [disabled]="(firstname.pristine)">Submit</button>
+  </form>
