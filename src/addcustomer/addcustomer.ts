@@ -3,37 +3,38 @@ import { Router } from '@angular/router';
 import { Http, Headers } from '@angular/http';
 import { contentHeaders } from '../common/headers';
 import { User } from '../user';
-import { Employee } from '../employee';
+import { Customer } from '../customer';
 import { DataService } from '../service/dataservice';
 import { Location } from '../location';
 
-const styles = require('./addemployee.css');
-const template = require('./addemployee.html');
+const styles = require('./addcustomer.css');
+const template = require('./addcustomer.html');
 
 @Component({
-  selector: 'addemployee',
+  selector: 'addcustomer',
   template: template,
   styles: [styles]
 })
-export class AddEmployee {
+export class AddCustomer {
   public location: Location;
-  public employee: Employee;
+  public customer: Customer;
   public object: any;
   public validForm = true;
   constructor(public router: Router, public http: Http, public dataservice: DataService) { }
-  adminEmployeeServices(event) {
-    this.router.navigate(['adminemployeeservices']);
+  employeeCustomerServices(event) {
+    this.router.navigate(['employeecustomerservices']);
   }
 
 
-  addEmployee(event, firstname, lastname, address, city, state, zipcode,
-    password, ssn, telephone, hourlyrate, startdate) {
+addCustomer($event, firstname, lastname,
+  address, city, state, creditcardnumber,
+  zipcode, password, ssn, telephone, email, rating ) {
     this.location = {
       state: state,
       city: city,
       zipcode: parseInt(zipcode)
     };
-    this.employee = {
+    this.customer = {
       address: address,
       firstname: firstname,
       lastname: lastname,
@@ -43,24 +44,25 @@ export class AddEmployee {
       telephone: parseInt(telephone)
     };
     this.object = {
-      employee: this.employee,
-      hourlyrate: parseInt(hourlyrate),
+      customer: this.customer,
+      email: email,
       id: parseInt(ssn),
-      startdate: startdate
+      creditcardnumber: creditcardnumber,
+      rating: rating
     };
 
     console.log(this.object);
-    this.postEmployee();
+    this.postCustomer();
   }
 
-  postEmployee() {
+  postCustomer() {
     var authHeader = new Headers();
     authHeader.append('Authorization', 'Basic ' +
       btoa(this.dataservice.username + ':' + this.dataservice.password));
     authHeader.append('Content-Type', 'application/json');
     let body = this.object;
     event.preventDefault();
-    this.http.post('http://localhost:8080/storage/manager/employee',
+    this.http.post('http://localhost:8080/storage/employee/customer',
       body, { headers: authHeader })
       .subscribe(
       response => {
@@ -69,25 +71,26 @@ export class AddEmployee {
       },
       error => {
         console.log(error.text());
-        alert(`{
-          "employee": {
-              "address": "string",
-              "firstname": "string",
-              "lastname": "string",
-              "location": {
-                    "city": "string",
-                    "state": "string",
-                    "zipcode": number
-              },
-              "password": "string",
-              "ssn": number,
-              "telephone": "string"
-          },
-          "hourlyrate": number,
-          "id": number,
-          "ssn": number,
-          "startdate": "date"
-          }`);
+        alert(`Please Make sure your id is valid
+        {
+                    "creditcardnumber": "string",
+                    "customer": {
+                      "address": "string",
+                      "firstname": "string",
+                      "lastname": "string",
+                      "location": {
+                        "city": "string",
+                        "state": "string",
+                        "zipcode": 0
+                      },
+                      "password": "string",
+                      "ssn": 0,
+                      "telephone": "string"
+                    },
+                    "email": "string",
+                    "id": 0,
+                    "rating": 0
+                  }`);
       }
       );
   }

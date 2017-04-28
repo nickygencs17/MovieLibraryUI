@@ -19,6 +19,8 @@ import { AddMovie } from './addmovie';
 import { EditMovie } from './editmovie';
 import { AddEmployee } from './addemployee';
 import { EditEmployee } from './editemployee';
+import { AddCustomer } from './addcustomer';
+import { EditCustomer} from './editcustomer';
 
 export const routes: Routes = [
   { path: '',       component: Login },
@@ -40,6 +42,8 @@ export const routes: Routes = [
   { path: 'editmovie',    component: EditMovie},
   { path: 'addemployee',    component: AddEmployee},
   { path: 'editemployee',    component: EditEmployee},
+  { path: 'addcustomer',    component: AddCustomer},
+  { path: 'editcustomer',    component: EditCustomer},
   { path: '**',     component: Login }
 
 
