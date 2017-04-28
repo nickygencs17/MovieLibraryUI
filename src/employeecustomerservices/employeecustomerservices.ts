@@ -71,7 +71,7 @@ export class EmployeeCustomerServices {
         if (error.status === 404) {
           alert('Name Not Found');
         } else if (error.status === 400) {
-          alert('Please Enter a Valid Name');
+          alert('Please Enter a Valid MovieId');
         } else {
           alert(error.text);
         }
