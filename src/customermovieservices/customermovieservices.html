@@ -1,12 +1,146 @@
-<h1>Renty.io</h1>
-<div>
- <h2>Customer Movie Services</h2>
-
-     <div style="text-align:left">
-          <button class="btn btn-default" (click)="customerHome($event)">Customer Home</button>
-          <button class="btn btn-default" (click)="logout($event)">Log Out</button>
-        </div>
+<div style="text-align:left">
+    <h2>Customer Movie Services</h2>
 </div>
 
+<h1>Renty.io</h1>
+<div style="text-align: center">
 
-  
+
+          <button class="btn btn-default" (click)="customerHome($event)">Customer Home</button>
+          <button class="btn btn-default" (click)="logout($event)">Log Out</button>
+</div>
+<h3>Click for Queue:</h3>
+<form role="form" (submit)="queueByCustomerId($event, customerID.value)">
+    <div class="form-group">
+        <label for="customerID">Customer Id:</label>
+        <input type="text" #customerID class="form-control" id="customerID" placeholder="CustomerId">
+    </div>
+    <br />
+    <br />
+    <button type="submit" class="btn btn-default" [disabled]="customerID.pristine">Get Queue by Customer ID</button>
+    <br />
+</form>
+<div class= "ngfordiv">
+    <ul>
+
+        <li *ngFor="let movie of movieArray">
+
+            <br />
+            ID:{{movie.id}} <br />
+            Name:{{movie.name}} <br />
+            Type:{{movie.type}} <br />
+            Rating:{{movie.rating}} <br />
+            Distribution Fee:{{movie.distrfee}} <br />
+            Number Of Copies:{{movie.numcopies}} <br />
+        </li>
+    </ul>
+</div>
+<h3>Movies By Type</h3>
+<form role="form" (submit)="moviesByType($event, type.value)">
+    <div class="form-group">
+        <label for="type">Type:</label>
+        <input type="text" #type class="form-control" id="type" placeholder="Type">
+    </div>
+    <br />
+    <br />
+    <button type="submit" class="btn btn-default" [disabled]="type.pristine">Get Movies by Type</button>
+    <br />
+</form>
+<div class= "ngfordiv">
+    <ul>
+
+        <li *ngFor="let movie of movieArrayType">
+
+            <br />
+            ID:{{movie.id}} <br />
+            Name:{{movie.name}} <br />
+            Type:{{movie.type}} <br />
+            Rating:{{movie.rating}} <br />
+            Distribution Fee:{{movie.distrfee}} <br />
+            Number Of Copies:{{movie.numcopies}} <br />
+        </li>
+    </ul>
+</div>
+
+<h3>Best Sellers</h3>
+<div class= "ngfordiv">
+    <button class="btn btn-default" (click)="moviesMostRented(event)">Get Best Sellers</button>
+
+    <ul>
+        <li *ngFor="let movie of movieArryMostrented">
+
+            <br />
+            ID:{{movie.id}} <br />
+            Name:{{movie.name}} <br />
+            Type:{{movie.type}} <br />
+            Rating:{{movie.rating}} <br />
+            Distribution Fee:{{movie.distrfee}} <br />
+            Number Of Copies:{{movie.numcopies}} <br />
+        </li>
+    </ul>
+</div>
+<h3>Movies By Keywords</h3>
+<form role="form" (submit)="moviesByKeywords($event, csvKeywords.value)">
+    <div class="form-group">
+        <label for="type">Keywords:</label>
+        <input type="text" #csvKeywords class="form-control" id="csvKeywords" placeholder="csvKeywords">
+    </div>
+    <br />
+    <br />
+    <button type="submit" class="btn btn-default" [disabled]="csvKeywords.pristine">Get Movies by Keywords</button>
+    <br />
+</form>
+<div class= "ngfordiv">
+    <ul>
+
+        <li *ngFor="let movie of movieArrayKeywords">
+
+            <br />
+            ID:{{movie.id}} <br />
+            Name:{{movie.name}} <br />
+            Type:{{movie.type}} <br />
+            Rating:{{movie.rating}} <br />
+            Distribution Fee:{{movie.distrfee}} <br />
+            Number Of Copies:{{movie.numcopies}} <br />
+        </li>
+    </ul>
+</div>
+<h3>Movies By Actors</h3>
+<form role="form" (submit)="moviesByActors($event, csvActors.value)">
+    <div class="form-group">
+        <label for="type">Actors:</label>
+        <input type="text" #csvActors class="form-control" id="csvActors" placeholder="csvActors">
+    </div>
+    <br />
+    <br />
+    <button type="submit" class="btn btn-default" [disabled]="csvActors.pristine">Get Movies by Actors</button>
+    <br />
+</form>
+<div class= "ngfordiv">
+    <ul>
+
+        <li *ngFor="let movie of movieArrayActors">
+
+            <br />
+            ID:{{movie.id}} <br />
+            Name:{{movie.name}} <br />
+            Type:{{movie.type}} <br />
+            Rating:{{movie.rating}} <br />
+            Distribution Fee:{{movie.distrfee}} <br />
+            Number Of Copies:{{movie.numcopies}} <br />
+        </li>
+    </ul>
+</div>
+<h3>Rate a Movie</h3>
+<form role="form" (submit)="updateRating($event, movieID.value, newrating.value)">
+    <div class="form-group">
+        <label for="type">Actors:</label>
+        <input type="number" #movieID class="form-control" id="movieID" placeholder="movieID">
+        <input type="number" #newrating class="form-control" id="newrating" placeholder="Rating">
+    </div>
+    <br />
+    <br />
+    <button type="submit" class="btn btn-default" [disabled]="newrating.pristine">Rate Movie</button>
+    <br />
+</form>
+

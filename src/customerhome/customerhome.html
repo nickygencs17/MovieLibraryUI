@@ -1,11 +1,40 @@
+<div style="text-align:left">
+    <h2>Customer Home</h2>
+</div>
+
 <h1>Renty.io</h1>
 <div>
- <h2>Customer Home</h2>
-        <div style="text-align:left">
-          <button class="btn btn-default" (click)="customerMovieServices($event)">Customer Movie Services</button>
+
+
+<button class="btn btn-default" (click)="customerMovieServices($event)">Customer Movie Services</button>
           <button class="btn btn-default" (click)="customerAccountServices($event)">Customer Account Services</button>
           <button class="btn btn-default" (click)="customerHelpServices($event)">Customer Help Services</button>
           <button class="btn btn-default" (click)="logout($event)">Log Out</button>
         </div>
-      </div>
 
+<h3>Click for Suggestions:</h3>
+<form role="form" (submit)="moviesByCustomerId($event, customerID.value)">
+    <div class="form-group">
+        <label for="customerID">Customer Id:</label>
+        <input type="text" #customerID class="form-control" id="customerID" placeholder="CustomerId">
+    </div>
+    <br />
+    <br />
+    <button type="submit" class="btn btn-default" [disabled]="customerID.pristine">Get Movies Suggestions</button>
+    <br />
+</form>
+<div class= "ngfordiv">
+    <ul>
+
+        <li *ngFor="let movie of movieArray">
+
+            <br />
+            ID:{{movie.id}} <br />
+            Name:{{movie.name}} <br />
+            Type:{{movie.type}} <br />
+            Rating:{{movie.rating}} <br />
+            Distribution Fee:{{movie.distrfee}} <br />
+            Number Of Copies:{{movie.numcopies}} <br />
+        </li>
+    </ul>
+</div>

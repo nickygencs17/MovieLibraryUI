@@ -16,19 +16,54 @@ const template = require('./customerhome.html');
   styles: [styles],
   providers: [MyService]
 })
-export class CustomerHome  {
-  constructor(public router: Router) {
+export class CustomerHome {
+  public path = 'http://localhost:8080/storage/customer/';
+  public movieArray: any;
+  public salesReportTotal;
+  public edited = true;
+
+  constructor(public router: Router, public http: Http, public dataservice: DataService) {
   }
+
   logout(event) {
     this.router.navigate(['login']);
   }
+
   customerMovieServices(event) {
     this.router.navigate(['customermovieservices']);
   }
+
   customerAccountServices(event) {
     this.router.navigate(['customeraccountservices']);
   }
+
   customerHelpServices(event) {
     this.router.navigate(['customerhelpservices']);
+  }
+
+  moviesByCustomerId(event, customerid) {
+    var authHeader = new Headers();
+    authHeader.append('Authorization', 'Basic ' +
+        btoa(this.dataservice.username + ':' + this.dataservice.password));
+    authHeader.append('Content-Type', 'application/json');
+    authHeader.append('Accept', 'application/json');
+    event.preventDefault();
+    this.http.get(this.path + 'suggestionMovies/' + customerid, { headers: authHeader })
+        .map((data) => data.json())
+        .subscribe((data) => {
+              console.log(data);
+              this.movieArray = data.entity;
+            },
+            error => {
+              if (error.status === 404) {
+                alert('Name Not Found');
+              } else if (error.status === 401) {
+                alert('Please Enter a Valid CustomerId');
+              } else if (error.status === 500) {
+                alert('Customer does not exist');
+              }else {
+                alert(error.text);
+              }
+            });
   }
 }
