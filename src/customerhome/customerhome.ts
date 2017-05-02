@@ -37,9 +37,6 @@ export class CustomerHome {
     this.router.navigate(['customeraccountservices']);
   }
 
-  customerHelpServices(event) {
-    this.router.navigate(['customerhelpservices']);
-  }
 
   moviesByCustomerId(event, customerid) {
     var authHeader = new Headers();

@@ -31,9 +31,7 @@ export class EmployeeHome  {
   employeeCustromerServices(event) {
     this.router.navigate(['employeecustomerservices']);
   }
-  employeeHelpServices(event) {
-    this.router.navigate(['employeehelpservices']);
-  }
+
     getMailingList(event) {
     var authHeader = new Headers();
     authHeader.append('Authorization', 'Basic ' +

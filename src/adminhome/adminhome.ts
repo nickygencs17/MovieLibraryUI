@@ -34,9 +34,6 @@ export class AdminHome {
   adminCustomerServices(event) {
     this.router.navigate(['admincustomerservices']);
   }
-  adminHelpServices(event) {
-    this.router.navigate(['adminhelpservices']);
-  }
   getSalesReport(event, month) {
     var authHeader = new Headers();
     authHeader.append('Authorization', 'Basic ' +
