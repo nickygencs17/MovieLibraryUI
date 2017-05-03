@@ -3,6 +3,7 @@
 body{
   background-image: url("back1.jpg");
     background-color: #cccccc;
+  font-family: Arial, Helvetica, sans-serif;
 }
 h1 {
   color: white; 
@@ -49,14 +50,15 @@ div.ngfordiv{
   -webkit-border-radius: 16;
   -moz-border-radius: 16;
   color: black;
-  font-size: 2.5vw;
+  font-size: 20px;
+  padding: 12px;
   background: white;
   text-decoration: none;
   outline: none; 
   border-style: solid;
   border-color:white;
   text-align: center;
-
+  cursor: pointer;
 }
 form{
   text-align: center;
@@ -99,6 +101,13 @@ input[type=radio] {
   color:white;
 
 }
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    margin: 0;
+}
 .centerd{
    width: 50%;
   display: block;
@@ -112,7 +121,12 @@ ul {
     padding: 0;
 }
 .dropbtn {
-  background-color: #4CAF50;
+  background: #3498db;
+  background-image: -webkit-linear-gradient(top, #3498db, #2980b9);
+  background-image: -moz-linear-gradient(top, #3498db, #2980b9);
+  background-image: -ms-linear-gradient(top, #3498db, #2980b9);
+  background-image: -o-linear-gradient(top, #3498db, #2980b9);
+  background-image: linear-gradient(to bottom, #3498db, #2980b9);
   color: white;
   padding: 16px;
   font-size: 16px;
@@ -125,6 +139,7 @@ ul {
   display: inline-block;
   float: right;
   padding-right: 15%;
+    max-width: 73px;
 }
 
 .dropdown-content {
@@ -150,5 +165,10 @@ ul {
 }
 
 .dropdown:hover .dropbtn {
-  background-color: #3e8e41;
+    background: #3cb0fd;
+    background-image: -webkit-linear-gradient(top, #3cb0fd, #3498db);
+    background-image: -moz-linear-gradient(top, #3cb0fd, #3498db);
+    background-image: -ms-linear-gradient(top, #3cb0fd, #3498db);
+    background-image: -o-linear-gradient(top, #3cb0fd, #3498db);
+    background-image: linear-gradient(to bottom, #3cb0fd, #3498db);
 }
