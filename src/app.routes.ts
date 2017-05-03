@@ -21,6 +21,7 @@ import { AddEmployee } from './addemployee';
 import { EditEmployee } from './editemployee';
 import { AddCustomer } from './addcustomer';
 import { EditCustomer} from './editcustomer';
+import { AddActor } from './addactor';
 
 export const routes: Routes = [
   { path: '',       component: Login },
@@ -44,6 +45,7 @@ export const routes: Routes = [
   { path: 'editemployee',    component: EditEmployee},
   { path: 'addcustomer',    component: AddCustomer},
   { path: 'editcustomer',    component: EditCustomer},
+  { path: 'addactor',    component: AddActor},
   { path: '**',     component: Login }
 
 

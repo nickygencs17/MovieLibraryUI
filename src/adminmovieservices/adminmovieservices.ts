@@ -39,6 +39,9 @@ export class AdminMovieServices {
   editMovie(event) {
     this.router.navigate(['editmovie']);
   }
+  addActor(event) {
+    this.router.navigate(['addactor']);
+  }
   deleteMovie(event, movieid) {
     var authHeader = new Headers();
     authHeader.append('Authorization', 'Basic ' +

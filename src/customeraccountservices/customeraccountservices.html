@@ -1,10 +1,94 @@
-<h1>Renty.io</h1>
-<div>
- <h2>Customer Account Services</h2>
 <div style="text-align:left">
+    <h2>Customer Account Services</h2>
+</div>
+
+<h1>Renty.io</h1>
+
+<div style="text-align: center">
+
+
           <button class="btn btn-default" (click)="customerHome($event)">Customer Home</button>
           <button class="btn btn-default" (click)="logout($event)">Log Out</button>
         </div>
-</div>
 
-  
+<h3>Click for Currently Held Movies:</h3>
+<form role="form" (submit)="curentMoviesByCustomerId($event, customerID.value)">
+    <div class="form-group">
+        <label for="customerID">Customer Id:</label>
+        <input type="text" #customerID class="form-control" id="customerID" placeholder="CustomerId">
+    </div>
+    <br />
+    <br />
+    <button type="submit" class="btn btn-default" [disabled]="customerID.pristine">Get Held Movies</button>
+    <br />
+</form>
+<div class= "ngfordiv">
+    <ul>
+
+        <li *ngFor="let movie of movieArray">
+
+            <br />
+            ID:{{movie.id}} <br />
+            Name:{{movie.name}} <br />
+            Type:{{movie.type}} <br />
+            Rating:{{movie.rating}} <br />
+            Distribution Fee:{{movie.distrfee}} <br />
+            Number Of Copies:{{movie.numcopies}} <br />
+        </li>
+    </ul>
+</div>
+<h3>Click for Account Information:</h3>
+<form role="form" (submit)="accountByCustomerId($event, customerIDaccount.value)">
+    <div class="form-group">
+        <label for="customerIDaccount">Customer Id:</label>
+        <input type="text" #customerIDaccount class="form-control" id="customerIDaccount" placeholder="CustomerId">
+    </div>
+    <br />
+    <br />
+    <button type="submit" class="btn btn-default" [disabled]="customerIDaccount.pristine">Get Account Information</button>
+    <br />
+</form>
+<div class= "ngfordiv">
+    <ul [hidden]=edited>
+        <li>
+            <br />
+            ID:{{customerById?.customer.customer.id}} <br />
+            Firstname:{{customerById?.customer.customer.firstname}}<br />
+            Lastname:{{customerById?.customer.customer.lastname}}<br />
+            Address:{{customerById?.customer.customer.address}}<br />
+            City:{{customerById?.customer.customer.location.city}}<br />
+            State:{{customerById?.customer.customer.location.state}}<br />
+            Zipcode:{{customerById?.customer.customer.location.zipcode}}<br />
+            Password:{{customerById?.customer.customer.password}}<br />
+            Credit Card Number:{{customerById?.customer.creditcardnumber}} <br />
+            SSN:{{customerById?.customer.ssn}} <br />
+            Email:{{customerById?.customer.email}} <br />
+            Telephone:{{customerById?.customer.customer.telephone}} <br />
+            Rating:{{customerById?.customer.rating}} <br />
+            Type:{{customerById?.type}}<br />
+            DateOpened:{{customerById?.dateopened}}<br />
+            AccountID:{{customerById?.id}}<br />
+
+        </li>
+    </ul>
+<h3>Get all orders:</h3>
+<form role="form" (submit)="ordersByCustomerId($event, customerIDorders.value)">
+    <div class="form-group">
+        <label for="customerIDorders">Customer Id:</label>
+        <input type="text" #customerIDorders class="form-control" id="customerIDorders" placeholder="CustomerId">
+    </div>
+    <br />
+    <br />
+    <button type="submit" class="btn btn-default" [disabled]="customerIDorders.pristine">Get All Orders</button>
+    <br />
+</form>
+<div class= "ngfordiv">
+    <ul *ngFor="let order of orderArray">
+        <li>
+        ID:{{order.id}} <br />
+        ReturnDate:{{order?.returndate}} <br />
+        Date Of Order:{{order.datetime}} <br />
+        </li>
+
+    </ul>
+</div></div>

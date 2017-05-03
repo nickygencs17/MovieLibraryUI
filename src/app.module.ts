@@ -32,6 +32,7 @@ import { AddEmployee } from './addemployee';
 import { EditEmployee} from './editemployee';
 import { AddCustomer } from './addcustomer';
 import { EditCustomer} from './editcustomer';
+import { AddActor } from './addactor';
 
 @NgModule({
   bootstrap: [App],
@@ -57,7 +58,7 @@ import { EditCustomer} from './editcustomer';
   AddEmployee,
   EditEmployee,
   AddCustomer,
-  EditCustomer
+  EditCustomer, AddActor
   ],
   imports: [
     HttpModule, BrowserModule, FormsModule,

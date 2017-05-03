@@ -62,7 +62,7 @@ export class EditCustomer {
 
   editCustomer($event, firstname, lastname,
     address, city, state, creditcardnumber,
-    zipcode, password, ssn, telephone, email, rating) {
+    zipcode, password, ssn, telephone, email, rating, type) {
     this.location = {
       state: state,
       city: city,
@@ -86,17 +86,17 @@ export class EditCustomer {
     };
 
     console.log(this.object);
-    this.putMethod();
+    this.putMethod(type);
   }
 
-  putMethod() {
+  putMethod(type) {
     var authHeader = new Headers();
     authHeader.append('Authorization', 'Basic ' +
       btoa(this.dataservice.username + ':' + this.dataservice.password));
     authHeader.append('Content-Type', 'application/json');
     let body = this.object;
     event.preventDefault();
-    this.http.put('http://localhost:8080/storage/employee/editCustomer',
+    this.http.put('http://localhost:8080/storage/employee/editCustomer/' + type,
       body, { headers: authHeader })
       .subscribe(
       response => {

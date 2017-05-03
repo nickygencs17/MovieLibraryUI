@@ -3,46 +3,49 @@ import { Router } from '@angular/router';
 import { Http, Headers } from '@angular/http';
 import { contentHeaders } from '../common/headers';
 import { User } from '../user';
-import { Movie } from '../movie';
+import { Customer } from '../customer';
 import { DataService } from '../service/dataservice';
+import { Location } from '../location';
 
-const styles = require('./addmovie.css');
-const template = require('./addmovie.html');
+const styles = require('./addactor.css');
+const template = require('./addactor.html');
 
 @Component({
-  selector: 'addmovie',
+  selector: 'addactor',
   template: template,
   styles: [styles]
 })
-export class AddMovie {
-  public movie: Movie;
+export class AddActor {
+  public location: Location;
+  public customer: Customer;
+  public object: any;
   public validForm = true;
   constructor(public router: Router, public http: Http, public dataservice: DataService) { }
-  adminMovieServices(event) {
+  employeeCustomerServices(event) {
     this.router.navigate(['adminmovieservices']);
   }
 
 
-  addMovie($event, name, distributionfee, type, numcopies, rating, csvOfActorIds) {
-    this.movie = {
-      id: 0,
+  addActor($event, name, age, sex, rating, csvOfMovieIds ) {
+    this.object = {
       name: name,
-      numcopies: parseInt(numcopies),
-      rating: parseInt(rating),
-      type: type,
-      distrfee: parseInt(distributionfee)
+      age: parseInt(age),
+      sex: sex,
+      rating: parseInt(rating)
     };
-    this.postMethod(csvOfActorIds);
+
+    console.log(this.object);
+    this.postActor(csvOfMovieIds);
   }
 
-  postMethod(csvOfActorIds) {
+  postActor(csvOfMovieIds) {
     var authHeader = new Headers();
     authHeader.append('Authorization', 'Basic ' +
       btoa(this.dataservice.username + ':' + this.dataservice.password));
     authHeader.append('Content-Type', 'application/json');
-    let body = this.movie;
+    let body = this.object;
     event.preventDefault();
-    this.http.post('http://localhost:8080/storage/manager/movie?csvOfActorIds=' + csvOfActorIds,
+    this.http.post('http://localhost:8080/storage/manager/actor?movieIDCSV=' + csvOfMovieIds,
       body, { headers: authHeader })
       .subscribe(
       response => {
@@ -51,14 +54,15 @@ export class AddMovie {
       },
       error => {
         console.log(error.text());
-        alert(`Movie {
-              distrfee: string;
-              id: number;
-              name: string;
-              numcopies: number;
-              rating: number;
-              type: string;
-              } '`);
+        alert(`Please Make sure your id is valid
+        {
+                   {
+  "age": 0,
+  "id": 0,
+  "name": "string",
+  "rating": 0,
+  "sex": "char"
+}`);
       }
       );
   }

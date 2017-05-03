@@ -19,7 +19,7 @@ const template = require('./adminhome.html');
 export class AdminHome {
   public path = 'http://localhost:8080/storage/manager/';
   public salesReportTotal;
-   public edited = true;
+  public edited = true;
   constructor(public router: Router, public http: Http, public dataservice: DataService) {
   }
   logout(event) {
@@ -28,7 +28,7 @@ export class AdminHome {
   adminMovieServices(event) {
     this.router.navigate(['adminmovieservices']);
   }
-   adminEmployeeServices(event) {
+  adminEmployeeServices(event) {
     this.router.navigate(['adminemployeeservices']);
   }
   adminCustomerServices(event) {
@@ -37,27 +37,52 @@ export class AdminHome {
   getSalesReport(event, month) {
     var authHeader = new Headers();
     authHeader.append('Authorization', 'Basic ' +
-      btoa(this.dataservice.username + ':' + this.dataservice.password));
+        btoa(this.dataservice.username + ':' + this.dataservice.password));
     authHeader.append('Content-Type', 'application/json');
     this.http.get(this.path + 'sales/' + month, { headers: authHeader })
-      .map((data) => data.json())
-      .subscribe((data) => {
-        console.log(data);
-        this.salesReportTotal = data.entity.toString();
-      },
-      error => {
-        if (error.status === 404) {
-          alert('Movie Name Not Found');
-        } else if (error.status === 400) {
-          alert('Please Enter a Valid Interger');
-        } else if (error.status === 401) {
-          alert('Please Enter a Valid Interger');
-        } else if (error.status === 500) {
-          alert('Please Enter a Valid Interger');
-        } else {
-          alert('Uknown Error Check Log');
-        }
-      });
+        .map((data) => data.json())
+        .subscribe((data) => {
+              console.log(data);
+              this.salesReportTotal = data.entity.toString();
+            },
+            error => {
+              if (error.status === 404) {
+                alert('Movie Name Not Found');
+              } else if (error.status === 400) {
+                alert('Please Enter a Valid Interger');
+              } else if (error.status === 401) {
+                alert('Please Enter a Valid Interger');
+              } else if (error.status === 500) {
+                alert('Please Enter a Valid Interger');
+              } else {
+                alert('Uknown Error Check Log');
+              }
+            });
     this.edited = false;
+  }
+  backUp(event) {
+    var authHeader = new Headers();
+    authHeader.append('Authorization', 'Basic ' +
+        btoa(this.dataservice.username + ':' + this.dataservice.password));
+    authHeader.append('Content-Type', 'application/json');
+    this.http.get(this.path + 'dump/', { headers: authHeader })
+        .map((data) => data.json())
+        .subscribe((data) => {
+              console.log(data);
+              this.salesReportTotal = data.entity.toString();
+            },
+            error => {
+              if (error.status === 404) {
+                alert('Movie Name Not Found');
+              } else if (error.status === 400) {
+                alert('Please Enter a Valid Interger');
+              } else if (error.status === 401) {
+                alert('Please Enter a Valid Interger');
+              } else if (error.status === 500) {
+                alert('Please Enter a Valid Interger');
+              } else {
+                alert('Uknown Error Check Log');
+              }
+            });
   }
 }

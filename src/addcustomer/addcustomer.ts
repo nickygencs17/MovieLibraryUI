@@ -18,6 +18,8 @@ const template = require('./addcustomer.html');
 export class AddCustomer {
   public location: Location;
   public customer: Customer;
+  public account: any;
+  public customerID;
   public object: any;
   public validForm = true;
   constructor(public router: Router, public http: Http, public dataservice: DataService) { }
@@ -28,7 +30,7 @@ export class AddCustomer {
 
 addCustomer($event, firstname, lastname,
   address, city, state, creditcardnumber,
-  zipcode, password, ssn, telephone, email, rating ) {
+  zipcode, password, ssn, telephone, email, rating, dateOpened, type) {
     this.location = {
       state: state,
       city: city,
@@ -51,6 +53,12 @@ addCustomer($event, firstname, lastname,
       rating: rating
     };
 
+    this.account = {
+      dateopened: dateOpened,
+      id: parseInt(ssn),
+      type: type
+    };
+
     console.log(this.object);
     this.postCustomer();
   }
@@ -63,16 +71,44 @@ addCustomer($event, firstname, lastname,
     let body = this.object;
     event.preventDefault();
     this.http.post('http://localhost:8080/storage/employee/customer',
-      body, { headers: authHeader })
-      .subscribe(
-      response => {
-        console.log(response.json());
-        alert('Created');
-      },
-      error => {
-        console.log(error.text());
-        alert(`Please Make sure your id is valid
-        {
+        body, { headers: authHeader })
+        .map((data) => data.json())
+        .subscribe((data) => {
+              this.customerID = data.entity;
+              console.log(this.customerID);
+              this.postAccount();
+            },
+            error => {
+              console.log(error.text());
+              alert(`{
+                  "datetime": "date",
+                  "id": 0,
+                  "returndate": "date"
+            }`);
+            }
+        );
+  }
+
+  private postAccount() {
+    console.log(this.account);
+    var authHeader = new Headers();
+    authHeader.append('Authorization', 'Basic ' +
+        btoa(this.dataservice.username + ':' + this.dataservice.password));
+    authHeader.append('Content-Type', 'application/json');
+    let body = this.account;
+    event.preventDefault();
+    this.http.post('http://localhost:8080/storage/employee/account',
+        body, {headers: authHeader})
+        .map((data) => data.json())
+        .subscribe((data) => {
+              this.customerID = data.entity;
+              console.log(this.customerID);
+              alert('created');
+            },
+            error => {
+              console.log(error.text());
+              alert(`{
+                  "customer": {
                     "creditcardnumber": "string",
                     "customer": {
                       "address": "string",
@@ -90,9 +126,11 @@ addCustomer($event, firstname, lastname,
                     "email": "string",
                     "id": 0,
                     "rating": 0
-                  }`);
-      }
-      );
+                  },
+                  "dateopened": "2017-05-02T21:25:16.640Z",
+                `);
+            }
+        );
   }
 }
 

@@ -41,7 +41,7 @@
 
   <form role="form" 
   (submit)="editCustomer($event, firstname.value, lastname.value, 
-  address.value, city.value, state.value, creditcardnumber.value, zipcode.value, password.value,ssn.value, telephone.value, email.value, rating.value )">
+  address.value, city.value, state.value, creditcardnumber.value, zipcode.value, password.value,ssn.value, telephone.value, email.value, rating.value, type.value )">
     <div class="form-group">
        <div class="form-group">
       <input type="number" #ssn class="form-control" id="ssn" placeholder="SSN/ID">
@@ -100,6 +100,13 @@
       <input type="number" #rating class="form-control" id="rating" placeholder="Rating">
      
     </div>
+      <div class="form-group" style="color: white">
+          <input type="radio" #type name="type" value="Limited"> Limited<br>
+          <input type="radio" #type  name="type" value="Unlimited-1"> Unlimited-1<br>
+          <input type="radio" #type name="type" value="Unlimited-2"> Unlimited-2<br>
+          <input type="radio" #type name="type" value="Unlimited-3"> Unlimited-3<br>
+
+      </div>
 
   <br /> 
    <br /> 

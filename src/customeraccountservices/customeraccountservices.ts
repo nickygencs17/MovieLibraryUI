@@ -17,12 +17,100 @@ const template = require('./customeraccountservices.html');
   providers: [MyService]
 })
 export class CustomerAccountServices {
-  constructor(public router: Router) {
+  public path = 'http://localhost:8080/storage/customer/';
+  public movieArray: any;
+  public customerById;
+  public edited = true;
+  public orderArray: any;
+
+  constructor(public router: Router, public http: Http, public dataservice: DataService) {
   }
+
   logout(event) {
     this.router.navigate(['login']);
   }
+
   customerHome(event) {
     this.router.navigate(['customerhome']);
   }
+
+  curentMoviesByCustomerId(event, customerid) {
+    var authHeader = new Headers();
+    authHeader.append('Authorization', 'Basic ' +
+        btoa(this.dataservice.username + ':' + this.dataservice.password));
+    authHeader.append('Content-Type', 'application/json');
+    authHeader.append('Accept', 'application/json');
+    event.preventDefault();
+    this.http.get(this.path + 'currentlyHeldMovies/' + customerid, {headers: authHeader})
+        .map((data) => data.json())
+        .subscribe((data) => {
+              this.movieArray = data.entity;
+            },
+            error => {
+              if (error.status === 404) {
+                alert('Name Not Found');
+              } else if (error.status === 401) {
+                alert('Please Enter a Valid CustomerId');
+              } else if (error.status === 500) {
+                alert('Customer does not exist');
+              } else {
+                alert(error.text);
+              }
+            });
+  }
+
+  accountByCustomerId(event, customerid) {
+    var authHeader = new Headers();
+    authHeader.append('Authorization', 'Basic ' +
+        btoa(this.dataservice.username + ':' + this.dataservice.password));
+    authHeader.append('Content-Type', 'application/json');
+    authHeader.append('Accept', 'application/json');
+    event.preventDefault();
+    this.http.get(this.path + 'account/' + customerid, {headers: authHeader})
+        .map((data) => data.json())
+        .subscribe((data) => {
+              console.log(data);
+              this.customerById = data.entity;
+              console.log(this.customerById);
+            },
+            error => {
+              if (error.status === 404) {
+                alert('Name Not Found');
+              } else if (error.status === 401) {
+                alert('Please Enter a Valid CustomerId');
+              } else if (error.status === 500) {
+                alert('Customer does not exist');
+              } else {
+                alert(error.text);
+              }
+            });
+    this.edited = false;
+  }
+  ordersByCustomerId($event, customerid) {
+  var authHeader = new Headers();
+  authHeader.append('Authorization', 'Basic ' +
+      btoa(this.dataservice.username + ':' + this.dataservice.password));
+  authHeader.append('Content-Type', 'a' +
+      'pplication/json');
+  authHeader.append('Accept', 'application/json');
+  event.preventDefault();
+  this.http.get(this.path + 'orders/' + customerid + '/current', {headers: authHeader})
+      .map((data) => data.json())
+      .subscribe((data) => {
+            console.log(data);
+            this.orderArray = data.entity;
+            console.log(this.orderArray);
+          },
+          error => {
+            if (error.status === 404) {
+              alert('Name Not Found');
+            } else if (error.status === 401) {
+              alert('Please Enter a Valid CustomerId');
+            } else if (error.status === 500) {
+              alert('Customer does not exist');
+            } else {
+              alert(error.text);
+            }
+          });
+}
 }

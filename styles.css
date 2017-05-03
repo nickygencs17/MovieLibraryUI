@@ -93,6 +93,12 @@ input[type=password] {
  text-align: center;
    
 }
+input[type=radio] {
+
+  text-align: center;
+  color:white;
+
+}
 .centerd{
    width: 50%;
   display: block;

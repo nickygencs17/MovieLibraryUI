@@ -19,7 +19,7 @@ const template = require('./customerhome.html');
 export class CustomerHome {
   public path = 'http://localhost:8080/storage/customer/';
   public movieArray: any;
-  public salesReportTotal;
+  public customerById;
   public edited = true;
 
   constructor(public router: Router, public http: Http, public dataservice: DataService) {
@@ -63,4 +63,6 @@ export class CustomerHome {
               }
             });
   }
+
+
 }
