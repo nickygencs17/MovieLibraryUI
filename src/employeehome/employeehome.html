@@ -25,6 +25,7 @@
       <li *ngFor="let customer of customerMailingList">
        
         <br />
+
                   FirstName:{{customer.customer.firstname}} <br />
                   LastName:{{customer.customer.lastname}} <br />
                   Address:{{customer.customer.address}} <br />
@@ -34,3 +35,22 @@
       </li>
 </ul>
 </div>
+ <br />
+ <br />
+ <div class= "ngfordiv">
+     <button class="btn btn-default" (click)="getAllEmployees($event)">Get All Employees</button>
+     <br />
+     <ul>
+
+         <li *ngFor="let employee of employeeArray">
+
+             <br />
+             ID:{{employee.id}} <br />
+             Firstname:{{employee.employee.firstname}}<br />
+             Lastname:{{employee.employee.lastname}}<br />
+             Location{{employee.employee.location.city}}<br />
+             StartDate:{{employee.startdate}} <br />
+         </li>
+     </ul>
+ </div>
+

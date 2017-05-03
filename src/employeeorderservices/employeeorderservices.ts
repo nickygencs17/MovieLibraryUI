@@ -42,7 +42,7 @@ const template = require('./employeeorderservices.html');
        console.log('here');
        this.postOrder(customerRep, movieID, accountNumber);
   }
-  postOrder(customerRep, movieID, accountNumber) {
+  postOrder(customerRep, movieID, customerid) {
 
     var authHeader = new Headers();
     authHeader.append('Authorization', 'Basic ' +
@@ -57,7 +57,7 @@ const template = require('./employeeorderservices.html');
           this.orderID = data.entity;
            console.log(this.orderID);
       this.rentalNode = {
-        accountNumber: accountNumber,
+        customerid: customerid,
         employeeID: customerRep,
         movieID: movieID,
         orderNumber: this.orderID

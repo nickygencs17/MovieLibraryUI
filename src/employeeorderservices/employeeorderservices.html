@@ -20,10 +20,10 @@
 
 
 
-  <form role="form" (submit)="addOrder($event, orderdate.value, customerRep.value, movieID.value, accountNumber.value)">
+  <form role="form" (submit)="addOrder($event, orderdate.value, customerRep.value, movieID.value, customerid.value)">
   
     <div class="form-group">
-      <input type="text" #accountNumber class="form-control" id="accountNumber" placeholder="Account Number"><br /><br />
+      <input type="text" #customerid class="form-control" id="customerid" placeholder="Customer Id"><br /><br />
       <input type="text" #movieID class="form-control" id="movieID" placeholder="MovieID"><br /><br />
       <input type="text" #customerRep class="form-control" id="customerRep" placeholder="Customer Rep Number"><br /><br />
       <input type="date" #orderdate class="form-control" id="orderdate" placeholder="Order Date"><br /><br />

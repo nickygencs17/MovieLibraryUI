@@ -19,7 +19,8 @@ const template = require('./employeehome.html');
 })
 export class EmployeeHome  {
   public customerMailingList: any;
-  public path = 'http://localhost:8080/storage/employee/mailList';
+  public employeeArray: any;
+  public path = 'http://localhost:8080/storage/employee/';
   constructor(public router: Router, public http: Http, public dataservice: DataService) {
   }
   logout(event) {
@@ -37,7 +38,7 @@ export class EmployeeHome  {
     authHeader.append('Authorization', 'Basic ' +
       btoa(this.dataservice.username + ':' + this.dataservice.password));
     authHeader.append('Content-Type', 'application/json');
-    this.http.get(this.path, { headers: authHeader })
+    this.http.get(this.path + 'mailList', { headers: authHeader })
       .map((data) => data.json())
       .subscribe((data) => {
         this.customerMailingList = data.entity;
@@ -49,5 +50,27 @@ export class EmployeeHome  {
           alert(error.text);
         }
       });
+  }
+  getAllEmployees(event) {
+    var authHeader = new Headers();
+    authHeader.append('Authorization', 'Basic ' +
+        btoa(this.dataservice.username + ':' + this.dataservice.password));
+    authHeader.append('Content-Type', 'application/json');
+    this.http.get(this.path + '/all', { headers: authHeader })
+        .map((data) => data.json())
+        .subscribe((data) => {
+              console.log(data);
+              this.employeeArray = data;
+              console.log(this.employeeArray);
+            },
+            error => {
+              if (error.status === 404) {
+                alert('Movie Name Not Found');
+              } else if (error.status === 400) {
+                alert('Please Enter a Valid Movie Id');
+              } else {
+                alert(error.text);
+              }
+            });
   }
 }
