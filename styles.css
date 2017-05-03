@@ -124,6 +124,7 @@ ul {
   position: relative;
   display: inline-block;
   float: right;
+  padding-right: 15%;
 }
 
 .dropdown-content {
