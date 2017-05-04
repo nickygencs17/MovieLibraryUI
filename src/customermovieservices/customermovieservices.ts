@@ -45,7 +45,9 @@ export class CustomerMovieServices {
         .subscribe((data) => {
               console.log(data);
               this.movieArray = data.entity;
-              if ( data.entity.length === 0) {
+                if (data.entity === null) {
+                    alert('You do not have access to this customers info');
+                } else if ( data.entity.length === 0) {
                   alert('Nothing in your queue');
               }
             },
@@ -56,7 +58,9 @@ export class CustomerMovieServices {
                 alert('Please Enter a Valid CustomerId');
               } else if (error.status === 500) {
                 alert('Customer does not exist');
-              }else {
+              }  else if (error.status === 409) {
+                  alert('You do not have acess to this customers info');
+              } else {
                 alert(error.text);
               }
             });
@@ -79,6 +83,8 @@ export class CustomerMovieServices {
                 alert('Movie Type Not Found');
               } else if (error.status === 400) {
                 alert('Please Enter a Valid Movie Id');
+              } else if (error.status === 409) {
+                  alert('You do not have acess to this customers info');
               } else {
                 alert(error.text);
               }
@@ -100,6 +106,8 @@ export class CustomerMovieServices {
                 alert('Name Not Found');
               } else if (error.status === 400) {
                 alert('Please Enter a Valid Name');
+              }  else if (error.status === 409) {
+                  alert('You do not have access to this customers info');
               } else {
                 alert(error.text);
               }
@@ -124,6 +132,8 @@ export class CustomerMovieServices {
             error => {
               if (error.status === 404) {
                 alert('Name Not Found');
+              }  else if (error.status === 409) {
+                  alert('You do not have access to this customers info');
               } else if (error.status === 400) {
                 alert('Please Enter a Valid Name');
               } else {
@@ -149,6 +159,8 @@ export class CustomerMovieServices {
             error => {
               if (error.status === 404) {
                 alert('Name Not Found');
+              } else if (error.status === 409) {
+                  alert('You do not have access to this customers info');
               } else if (error.status === 500) {
                 alert('No Movies Found');
               } else {
@@ -174,6 +186,8 @@ export class CustomerMovieServices {
                 alert('Movie Not Found');
               } else if (error.status === 400) {
                 alert('Please Enter a Valid Name');
+              } else if (error.status === 409) {
+                  alert('You do not have access to this customers info');
               } else {
                 alert(error.text);
               }

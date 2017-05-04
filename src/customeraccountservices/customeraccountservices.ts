@@ -45,6 +45,9 @@ export class CustomerAccountServices {
         .map((data) => data.json())
         .subscribe((data) => {
               this.movieArray = data.entity;
+                if (data.statusType === 'CONFLICT') {
+                    alert('You do not have access to this customers info');
+                }
             },
             error => {
               if (error.status === 404) {
@@ -53,6 +56,8 @@ export class CustomerAccountServices {
                 alert('Please Enter a Valid CustomerId');
               } else if (error.status === 500) {
                 alert('Customer does not exist');
+              } else if (error.status === 409) {
+                  alert('You do not have access to this customers info');
               } else {
                 alert(error.text);
               }
@@ -71,11 +76,16 @@ export class CustomerAccountServices {
         .subscribe((data) => {
               console.log(data);
               this.customerById = data.entity;
-                if ( this.customerById === null ) {
-                    alert('Customer Not Found');
-                    this.edited = true;
-                } else {
+                if (data.statusType === 'CONFLICT') {
+                    alert('You do not have access to this customers info');
                     this.edited = false;
+                } else {
+                    if (this.customerById === null) {
+                        alert('Customer Not Found');
+                        this.edited = true;
+                    } else {
+                        this.edited = false;
+                    }
                 }
             },
             error => {
@@ -85,6 +95,8 @@ export class CustomerAccountServices {
                 alert('Please Enter a Valid CustomerId');
               } else if (error.status === 500) {
                 alert('Customer does not exist');
+              } else if (error.status === 409) {
+                  alert('You do not have access to this customers info');
               } else {
                 alert(error.text);
               }
@@ -103,7 +115,11 @@ export class CustomerAccountServices {
       .subscribe((data) => {
             console.log(data);
             this.orderArray = data.entity;
-            console.log(this.orderArray);
+              if (data.entity === null) {
+                  alert('You do not have access to this customers info');
+              } else if ( data.entity.length === 0) {
+                  alert('Nothing in your orders');
+              }
           },
           error => {
             if (error.status === 404) {

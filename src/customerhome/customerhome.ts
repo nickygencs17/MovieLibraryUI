@@ -50,7 +50,9 @@ export class CustomerHome {
         .subscribe((data) => {
               console.log(data);
               this.movieArray = data.entity;
-              if (data.entity.length === 0) {
+              if (data.entity === null) {
+                alert('You do not have access to this customers info');
+              } else if (data.entity.length === 0) {
                 alert('No Suggestions for you yet!');
               }
             },
@@ -61,7 +63,9 @@ export class CustomerHome {
                 alert('Please Enter a Valid CustomerId');
               } else if (error.status === 500) {
                 alert('Customer does not exist');
-              }else {
+              } else if (error.status === 409) {
+                alert('You do not have access to this customers info');
+              } else {
                 alert(error.text);
               }
             });
