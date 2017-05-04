@@ -18,7 +18,7 @@
 <form role="form" (submit)="deleteCustomer($event, customerid.value)">
   <div class="form-group">
     <label for="customerid">Customer Id:</label>
-    <input type="text" #customerid class="form-control" id="customerid" placeholder="Customer Id">
+    <input type="number" #customerid max="999999999" min="1" class="form-control" id="customerid" placeholder="Customer Id">
   </div>
    <br />
   <button type="submit" class="btn btn-default" [disabled]="customerid.pristine">Delete Customer</button>
@@ -29,7 +29,7 @@
 <form role="form" (submit)="moviesByCustomerId($event, customerID.value)">
   <div class="form-group">
     <label for="type">Customer Id:</label>
-    <input type="text" #customerID class="form-control" id="customerID" placeholder="CustomerId">
+    <input type="number" #customerID max="999999999" min="1" class="form-control" id="customerID" placeholder="CustomerId">
   </div>
   <br />
   <br />

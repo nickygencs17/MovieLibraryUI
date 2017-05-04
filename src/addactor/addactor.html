@@ -1,5 +1,5 @@
  <div style="text-align:left">
-<h2>Add a Customer</h2>
+<h2>Add an Actor</h2>
 <button class="btn btn-default" (click)="employeeCustomerServices($event)">Back</button>
 </div>
 
@@ -15,17 +15,17 @@
     </div>
     <br /> 
       <div class="form-group">
-      <input type="number" #age class="form-control" id="age" placeholder="Age">
+      <input type="number" #age min="1" max="120" class="form-control" id="age" placeholder="Age">
      
     </div>
     <br />
       <div class="form-group">
-          <input type="text" #sex class="form-control" id="sex" placeholder="Sex">
+          <input type="text" #sex maxlength="1" class="form-control" id="sex" placeholder="Sex">
 
       </div>
      <br /> 
       <div class="form-group">
-      <input type="number" #rating class="form-control" id="rating" placeholder="Rating">
+      <input type="number" #rating min="1" max="5"class="form-control" id="rating" placeholder="Rating">
      
     </div>
       <br />

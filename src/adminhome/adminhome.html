@@ -18,7 +18,7 @@
 <form role="form" (submit)="getSalesReport($event, month.value)">
   <div class="form-group">
     <label for="month">Month:</label>
-    <input type="text" #month class="form-control" id="month" placeholder="Month">
+    <input type="number" min="1" max="12" #month class="form-control" id="month" placeholder="Month">
   </div>
   <br /><br />
   <button type="submit" class="btn btn-default" [disabled]="month.pristine">Get Sales Report</button>

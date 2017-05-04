@@ -15,7 +15,7 @@
 <form role="form" (submit)="moviesByCustomerId($event, customerID.value)">
     <div class="form-group">
         <label for="customerID">Customer Id:</label>
-        <input type="text" #customerID class="form-control" id="customerID" placeholder="CustomerId">
+        <input type="number" min="1" maxlength="999999999" #customerID class="form-control" id="customerID" placeholder="CustomerId">
     </div>
     <br />
     <br />

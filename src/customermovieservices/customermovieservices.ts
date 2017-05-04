@@ -45,10 +45,13 @@ export class CustomerMovieServices {
         .subscribe((data) => {
               console.log(data);
               this.movieArray = data.entity;
+              if ( data.entity.length === 0) {
+                  alert('Nothing in your queue');
+              }
             },
             error => {
               if (error.status === 404) {
-                alert('Name Not Found');
+                alert('Customer Id Not Found');
               } else if (error.status === 401) {
                 alert('Please Enter a Valid CustomerId');
               } else if (error.status === 500) {
@@ -67,6 +70,9 @@ export class CustomerMovieServices {
         .map((data) => data.json())
         .subscribe((data) => {
               this.movieArrayType = data.entity;
+                if ( data.entity.length === 0) {
+                    alert('No movies by that type found');
+                }
             },
             error => {
               if (error.status === 404) {
@@ -111,6 +117,9 @@ export class CustomerMovieServices {
         .subscribe((data) => {
               console.log(data);
               this.movieArrayKeywords = data.entity;
+                if ( data.entity.length === 0) {
+                    alert('No movies found');
+                }
             },
             error => {
               if (error.status === 404) {
@@ -133,12 +142,15 @@ export class CustomerMovieServices {
         .subscribe((data) => {
               console.log(data);
               this.movieArrayActors = data.entity;
+                if ( data.entity.length === 0) {
+                    alert('No movies found');
+                }
             },
             error => {
               if (error.status === 404) {
                 alert('Name Not Found');
-              } else if (error.status === 400) {
-                alert('Please Enter a Valid Name');
+              } else if (error.status === 500) {
+                alert('No Movies Found');
               } else {
                 alert(error.text);
               }
@@ -158,8 +170,8 @@ export class CustomerMovieServices {
               alert('updated');
             },
             error => {
-              if (error.status === 404) {
-                alert('Name Not Found');
+              if (error.status === 500) {
+                alert('Movie Not Found');
               } else if (error.status === 400) {
                 alert('Please Enter a Valid Name');
               } else {

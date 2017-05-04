@@ -133,6 +133,9 @@ ul {
   border: none;
   cursor: pointer;
 }
+input{
+  width: 20%;
+}
 
 .dropdown {
   position: relative;

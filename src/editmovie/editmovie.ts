@@ -33,6 +33,11 @@ export class EditMovie {
       .subscribe((data) => {
         console.log(data);
         this.movieByID = data.entity;
+        if ( this.movieByID != null ) {
+          this.edited = false;
+        } else {
+          alert('Movie Not Found');
+        }
       },
       error => {
         if (error.status === 404) {
@@ -45,7 +50,7 @@ export class EditMovie {
           alert(error.text);
         }
       });
-      this.edited = false;
+
 
   }
   putMovie(event, id, name, distrfee, type, numcopies, rating) {
@@ -78,17 +83,16 @@ export class EditMovie {
         alert('Edited');
       },
       error => {
-        console.log(error.text());
-        alert(`Movie {
-              distrfee: string;
-              id: number;
-              name: string;
-              numcopies: number;
-              rating: number;
-              type: string;
-              } '`);
-      }
-      );
-  }
+        if (error.status === 404) {
+          alert('Movie Name Not Found');
+        } else if (error.status === 400) {
+          alert('Please Enter a Valid Name');
+        } else if (error.status === 500) {
+          alert('Please Enter a Valid Movie Id');
+        } else {
+          alert(error.text);
+        }
+      });
 
-}
+}}
+

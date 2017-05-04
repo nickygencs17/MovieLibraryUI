@@ -31,6 +31,7 @@ export class EditEmployee {
 
 
   getEmployeebyID($event, employeeID) {
+      this.edited = true;
     var authHeader = new Headers();
     authHeader.append('Authorization', 'Basic ' +
       btoa(this.dataservice.username + ':' + this.dataservice.password));
@@ -41,6 +42,12 @@ export class EditEmployee {
       .subscribe((data) => {
         console.log(data);
         this.employeeById = data.entity;
+              if ( this.employeeById === null ) {
+                  alert('Employee Not Found');
+                  this.edited = true;
+              } else {
+                  this.edited = false;
+              }
       },
       error => {
         if (error.status === 404) {
@@ -53,8 +60,6 @@ export class EditEmployee {
           alert(error.text);
         }
       });
-      this.edited = false;
-
   }
 
 
@@ -99,31 +104,19 @@ export class EditEmployee {
       .subscribe(
       response => {
         console.log(response.json());
-        alert('Created');
+        alert('Edited');
       },
-      error => {
-        console.log(error.text());
-        alert(`{
-          "employee": {
-              "address": "string",
-              "firstname": "string",
-              "lastname": "string",
-              "location": {
-                    "city": "string",
-                    "state": "string",
-                    "zipcode": number
-              },
-              "password": "string",
-              "ssn": number,
-              "telephone": "string"
-          },
-          "hourlyrate": number,
-          "id": number,
-          "ssn": number,
-          "startdate": "date"
-          }`);
-      }
-      );
+          error => {
+              if (error.status === 404) {
+                  alert('Employee Name Not Found');
+              } else if (error.status === 400) {
+                  alert('Please Enter a Valid Name');
+              } else if (error.status === 500) {
+                  alert('Please Enter a Valid Employee Id');
+              } else {
+                  alert(error.text);
+              }
+          });
   }
 
 }

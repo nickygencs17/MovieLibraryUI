@@ -50,6 +50,9 @@ export class CustomerHome {
         .subscribe((data) => {
               console.log(data);
               this.movieArray = data.entity;
+              if (data.entity.length === 0) {
+                alert('No Suggestions for you yet!');
+              }
             },
             error => {
               if (error.status === 404) {

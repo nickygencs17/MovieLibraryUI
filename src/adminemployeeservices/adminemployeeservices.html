@@ -18,7 +18,7 @@
 <form role="form" (submit)="deleteEmployee($event, employeeid.value)">
   <div class="form-group">
     <label for="employeeid">EmployeeId:</label>
-    <input type="text" #employeeid class="form-control" id="employeeid" placeholder="EmployeeId">
+    <input type="number" min="1" max="999999999" #employeeid class="form-control" id="employeeid" placeholder="EmployeeId">
   </div>
    <br />
   <button type="submit" class="btn btn-default" [disabled]="employeeid.pristine">Delete Employee</button>

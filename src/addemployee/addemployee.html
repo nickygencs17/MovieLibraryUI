@@ -32,12 +32,12 @@
     </div>
     <br /> 
         <div class="form-group">
-      <input type="text" #state class="form-control" id="state" placeholder="State">
+      <input type="text" #state maxlength="2" class="form-control" id="state" placeholder="State">
      
     </div>
     <br /> 
      <div class="form-group">
-      <input type="number" #zipcode class="form-control" id="zipcode" placeholder="Zip Code">
+      <input type="number" #zipcode min="1" max="99999" class="form-control" id="zipcode" placeholder="Zip Code">
      
     </div>
     <br /> 
@@ -47,17 +47,17 @@
     </div>
     <br /> 
      <div class="form-group">
-      <input type="number" #ssn class="form-control" id="ssn" placeholder="SSN">
+      <input type="number" #ssn min="1" maxlength="999999999" class="form-control" id="ssn" placeholder="SSN">
      
     </div>
     <br /> 
       <div class="form-group">
-      <input type="number" #telephone class="form-control" id="telephone" placeholder="Telephone">
+      <input type="number" #telephone min="1" maxlength="9999999999" class="form-control" id="telephone" placeholder="Telephone">
      
     </div>
     <br /> 
       <div class="form-group">
-      <input type="number" #hourlyrate class="form-control" id="hourlyrate" placeholder="Hourly Rate">
+      <input type="number" #hourlyrate min="1" class="form-control" id="hourlyrate" placeholder="Hourly Rate">
      
     </div>
     <br /> 

@@ -16,7 +16,7 @@
     <br /> 
 
     <div class="form-group">
-      <input type="number" #distrfee class="form-control" id="distrfee" placeholder="Distribution Fee">
+      <input type="number" min="1" #distrfee class="form-control" id="distrfee" placeholder="Distribution Fee">
     </div>
     <br /> 
 
@@ -26,13 +26,13 @@
     <br /> 
 
        <div class="form-group">
-      <input type="number" #numcopies class="form-control" id="numcopies" placeholder="Number Of Copies">
+      <input type="number" min="1" #numcopies class="form-control" id="numcopies" placeholder="Number Of Copies">
      
     </div>
     <br /> 
 
        <div class="form-group">
-      <input type="number" #rating class="form-control" id="rating" placeholder="Rating">
+      <input type="number" min="1" max="5" #rating class="form-control" id="rating" placeholder="Rating">
     </div>
     
     
@@ -41,6 +41,7 @@
           <input type="text" #csvOfActorIds class="form-control" id="csvOfActorIds" placeholder="CSV of ActorIds Appeared In">
 
       </div>
+      <br />
 
 
       <button type="submit" class="btn btn-default" [disabled]="(name.pristine)">Submit</button>

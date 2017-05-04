@@ -91,7 +91,12 @@ const template = require('./employeeorderservices.html');
       body, { headers: authHeader })
       .map((data) => data.json())
         .subscribe((data) => {
-          alert('created');
+          console.log(data);
+          if (data.status === 400) {
+              alert('One of your ids is not valid');
+          } else {
+              alert('Created');
+          }
         },
       error => {
         console.log(error.text());

@@ -41,19 +41,24 @@ export class EditCustomer {
       .subscribe((data) => {
         console.log(data);
         this.customerById = data.entity;
+            if ( this.customerById === null ) {
+              alert('Employee Not Found');
+              this.edited = true;
+            } else {
+              this.edited = false;
+            }
       },
       error => {
         if (error.status === 404) {
-          alert('Movie Name Not Found');
+          alert('Employee Name Not Found');
         } else if (error.status === 400) {
           alert('Please Enter a Valid Name');
         } else if (error.status === 500) {
-          alert('Please Enter a Valid Name');
+          alert('Please Enter a Valid Customer Id');
         } else {
           alert(error.text);
         }
       });
-    this.edited = false;
 
   }
 
@@ -104,28 +109,15 @@ export class EditCustomer {
         alert('Created');
       },
       error => {
-        console.log(error.text());
-        alert(
-          `Please Make sure your id is valid{
-                    "creditcardnumber": "string",
-                    "customer": {
-                      "address": "string",
-                      "firstname": "string",
-                      "lastname": "string",
-                      "location": {
-                        "city": "string",
-                        "state": "string",
-                        "zipcode": 0
-                      },
-                      "password": "string",
-                      "ssn": 0,
-                      "telephone": "string"
-                    },
-                    "email": "string",
-                    "id": 0,
-                    "rating": 0
-                  }`);
-       }
-      );
+        if (error.status === 404) {
+          alert('Employee Name Not Found');
+        } else if (error.status === 400) {
+          alert('Please Enter a Valid Name');
+        } else if (error.status === 500) {
+          alert('Please Enter a Valid Customer Id');
+        } else {
+          alert(error.text);
+        }
+      });
   }
 }

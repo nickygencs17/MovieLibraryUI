@@ -53,7 +53,7 @@ export class EmployeeCustomerServices {
             },
             error => {
               if (error.status === 404) {
-                alert('Movie Not Found');
+                alert('Employee Not Found');
               } else if (error.status === 400) {
                 alert('Please Enter a Valid Customer Id');
               } else {
@@ -74,8 +74,8 @@ export class EmployeeCustomerServices {
         this.movieArray = data.entity;
       },
       error => {
-        if (error.status === 404) {
-          alert('Name Not Found');
+        if (error.status === 500) {
+          alert('Customer Not Found');
         } else if (error.status === 400) {
           alert('Please Enter a Valid MovieId');
         } else {

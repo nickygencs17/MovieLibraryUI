@@ -47,7 +47,7 @@ export class AdminEmployeeServices {
       },
       error => {
         if (error.status === 404) {
-          alert('Movie Not Found');
+          alert('Employee Not Found');
         } else if (error.status === 400) {
           alert('Please Enter a Valid Movie Id');
         } else {

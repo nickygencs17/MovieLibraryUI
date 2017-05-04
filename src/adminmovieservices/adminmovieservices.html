@@ -21,7 +21,7 @@
 <form role="form" (submit)="deleteMovie($event, movieid.value)">
   <div class="form-group">
     <label for="movieid">MovieId:</label>
-    <input type="text" #movieid class="form-control" id="movieid" placeholder="MovieId">
+    <input type="number" min="1" #movieid class="form-control" id="movieid" placeholder="MovieId">
   </div>
   <br />
   <br />

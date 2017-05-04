@@ -15,7 +15,7 @@
 <form role="form" (submit)="curentMoviesByCustomerId($event, customerID.value)">
     <div class="form-group">
         <label for="customerID">Customer Id:</label>
-        <input type="text" #customerID class="form-control" id="customerID" placeholder="CustomerId">
+        <input type="number" min="1" maxlength="999999999" #customerID class="form-control" id="customerID" placeholder="CustomerId">
     </div>
     <br />
     <br />
@@ -41,7 +41,7 @@
 <form role="form" (submit)="accountByCustomerId($event, customerIDaccount.value)">
     <div class="form-group">
         <label for="customerIDaccount">Customer Id:</label>
-        <input type="text" #customerIDaccount class="form-control" id="customerIDaccount" placeholder="CustomerId">
+        <input type="number" min="1" maxlength="999999999" #customerIDaccount class="form-control" id="customerIDaccount" placeholder="CustomerId">
     </div>
     <br />
     <br />
@@ -75,7 +75,7 @@
 <form role="form" (submit)="ordersByCustomerId($event, customerIDorders.value)">
     <div class="form-group">
         <label for="customerIDorders">Customer Id:</label>
-        <input type="text" #customerIDorders class="form-control" id="customerIDorders" placeholder="CustomerId">
+        <input type="number" min="1" maxlength="999999999" #customerIDorders class="form-control" id="customerIDorders" placeholder="CustomerId">
     </div>
     <br />
     <br />

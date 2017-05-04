@@ -71,7 +71,12 @@ export class CustomerAccountServices {
         .subscribe((data) => {
               console.log(data);
               this.customerById = data.entity;
-              console.log(this.customerById);
+                if ( this.customerById === null ) {
+                    alert('Customer Not Found');
+                    this.edited = true;
+                } else {
+                    this.edited = false;
+                }
             },
             error => {
               if (error.status === 404) {
@@ -84,7 +89,6 @@ export class CustomerAccountServices {
                 alert(error.text);
               }
             });
-    this.edited = false;
   }
   ordersByCustomerId($event, customerid) {
   var authHeader = new Headers();
@@ -103,7 +107,7 @@ export class CustomerAccountServices {
           },
           error => {
             if (error.status === 404) {
-              alert('Name Not Found');
+              alert('CustomerId Not Found');
             } else if (error.status === 401) {
               alert('Please Enter a Valid CustomerId');
             } else if (error.status === 500) {

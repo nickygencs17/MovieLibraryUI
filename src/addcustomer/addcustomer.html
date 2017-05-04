@@ -32,12 +32,12 @@
     </div>
     <br /> 
         <div class="form-group">
-      <input type="text" #state class="form-control" id="state" placeholder="State">
+      <input type="text" #state maxlength="2" class="form-control" id="state" placeholder="State">
      
     </div>
     <br /> 
      <div class="form-group">
-      <input type="number" #zipcode class="form-control" id="zipcode" placeholder="Zip Code">
+      <input type="number" #zipcode min="0001" maxlength="99999" class="form-control" id="zipcode" placeholder="Zip Code">
      
     </div>
     <br /> 
@@ -47,27 +47,27 @@
     </div>
     <br /> 
      <div class="form-group">
-      <input type="number" #ssn class="form-control" id="ssn" placeholder="SSN">
+      <input type="number" #ssn min="1" max="999999999" class="form-control" id="ssn" placeholder="SSN">
      
     </div>
     <br /> 
       <div class="form-group">
-      <input type="number" #telephone class="form-control" id="telephone" placeholder="Telephone">
+      <input type="number" #telephone min="1" max="9999999999" class="form-control" id="telephone" placeholder="Telephone">
      
     </div>
     <br /> 
       <div class="form-group">
-      <input type="number" #creditcardnumber class="form-control" id="creditcardnumber" placeholder="Credit Card Number">
+      <input type="number" #creditcardnumber min="1" class="form-control" id="creditcardnumber" placeholder="Credit Card Number">
      
     </div>
       <br /> 
         <div class="form-group">
-      <input type="text" #email class="form-control" id="email" placeholder="Email">
+      <input type="email" #email class="form-control" id="email" placeholder="Email">
      
     </div>
      <br /> 
       <div class="form-group">
-      <input type="number" #rating class="form-control" id="rating" placeholder="Rating">
+      <input type="number" #rating min="1" max="5" class="form-control" id="rating" placeholder="Rating">
      
     </div>
       <br />
@@ -78,6 +78,7 @@
           <input type="radio" #type name="type" value="Unlimited-3"> Unlimited-3<br>
 
       </div>
+      <br />
       <div class="form-group">
           <input type="date" #dateOpened class="form-control" id="dateOpened" placeholder="Date Opened">
 

@@ -92,9 +92,13 @@ export class AdminMovieServices {
       .map((data) => data.json())
       .subscribe((data) => {
         this.movieArrayType = data.entity;
+        console.log(this.movieArrayType);
+        if (this.movieArrayType.length === 0) {
+          alert('No movies of that type found');
+        }
       },
       error => {
-        if (error.status === 404) {
+        if (error.status === 500) {
           alert('Movie Type Not Found');
         } else if (error.status === 400) {
           alert('Please Enter a Valid Movie Id');
@@ -113,6 +117,11 @@ export class AdminMovieServices {
       .subscribe((data) => {
         console.log(data);
         this.movieByName = data.entity;
+        if (this.movieByName != null) {
+          this.edited = false;
+        } else {
+          alert('Movie Not Found');
+        }
       },
       error => {
         if (error.status === 404) {
@@ -125,7 +134,7 @@ export class AdminMovieServices {
           alert(error.text);
         }
       });
-    this.edited = false;
+
   }
   moviesByCustomerName(event, firstname, lastname) {
     var authHeader = new Headers();
@@ -142,7 +151,7 @@ export class AdminMovieServices {
       error => {
         if (error.status === 404) {
           alert('Name Not Found');
-        } else if (error.status === 400) {
+        } else if (error.status === 500) {
           alert('Please Enter a Valid Name');
         } else {
           alert(error.text);

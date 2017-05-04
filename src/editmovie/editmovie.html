@@ -6,7 +6,7 @@
 <form role="form" (submit)="getMovie($event, movieID.value)">
   <div class="form-group">
     <label for="movieID">MovieID:</label>
-    <input type="text" #movieID class="form-control" id="movieID" placeholder="MovieId">
+    <input type="number" min="1" #movieID class="form-control" id="movieID" placeholder="MovieId">
   </div>
   <br />
 
@@ -34,7 +34,7 @@
 
   <form role="form" (submit)="putMovie($event, id.value, name.value, distrfee.value, type.value, numcopies.value, rating.value)">
     <div class="form-group">
-      <input type="number" #id class="form-control" id="id" placeholder="MovieId">
+      <input type="number" #id min="1" class="form-control" id="id" placeholder="MovieId">
     
     </div>
     <br /> 
@@ -46,7 +46,7 @@
     <br /> 
 
     <div class="form-group">
-      <input type="number" #distrfee class="form-control" id="distrfee" placeholder="Distribution Fee">
+      <input type="number" #distrfee min="1" class="form-control" id="distrfee" placeholder="Distribution Fee">
     </div>
     <br /> 
 
@@ -56,13 +56,13 @@
     <br /> 
 
        <div class="form-group">
-      <input type="number" #numcopies class="form-control" id="numcopies" placeholder="Number Of Copies">
+      <input type="number" #numcopies min="1" class="form-control" id="numcopies" placeholder="Number Of Copies">
      
     </div>
     <br /> 
 
        <div class="form-group">
-      <input type="number" #rating class="form-control" id="rating" placeholder="Rating">
+      <input type="number" #rating min="1" max="5" class="form-control" id="rating" placeholder="Rating">
     </div>
     
     

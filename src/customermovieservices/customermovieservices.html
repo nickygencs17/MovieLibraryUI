@@ -13,7 +13,7 @@
 <form role="form" (submit)="queueByCustomerId($event, customerID.value)">
     <div class="form-group">
         <label for="customerID">Customer Id:</label>
-        <input type="text" #customerID class="form-control" id="customerID" placeholder="CustomerId">
+        <input type="number" min="1" maxlength="999999999"  #customerID class="form-control" id="customerID" placeholder="CustomerId">
     </div>
     <br />
     <br />
@@ -134,8 +134,10 @@
 <h3>Rate a Movie</h3>
 <form role="form" (submit)="updateRating($event, movieID.value, newrating.value)">
     <div class="form-group">
-        <input type="number" #movieID class="form-control" id="movieID" placeholder="movieID">
-        <input type="number" #newrating class="form-control" id="newrating" placeholder="Rating">
+        <label for="type">Movie Id:</label>
+        <input type="number" min="1" #movieID class="form-control" id="movieID" placeholder="movieID"><br />
+        <label for="type">Rating:</label>
+        <input type="number" min="1" max="5" #newrating class="form-control" id="newrating" placeholder="Rating">
     </div>
     <br />
     <br />

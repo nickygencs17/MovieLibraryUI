@@ -1,12 +1,12 @@
   <div style="text-align:left">
-<h2>Edit a Movie</h2>
+<h2>Edit an Employee</h2>
 <button class="btn btn-default" (click)="adminEmployeeServices($event)">Back</button>
 </div>
  <h3>Get The Employee By Id:</h3>
 <form role="form" (submit)="getEmployeebyID($event, employeeID.value)">
   <div class="form-group">
     <label for="employeeID">Employee ID:</label>
-    <input type="text" #employeeID class="form-control" id="employeeID" placeholder="Employee Id">
+    <input type="number" min="1" max="999999999" #employeeID class="form-control" id="employeeID" placeholder="Employee Id">
   </div>
   <br />
 
@@ -42,7 +42,7 @@
   (submit)="putEmployee($event, firstname.value, lastname.value, 
   address.value, city.value, state.value, zipcode.value, password.value,ssn.value, telephone.value, hourlyrate.value, startdate.value )">
     <div class="form-group">
-      <input type="number" #ssn class="form-control" id="ssn" placeholder="SSN/ID">
+      <input type="number" #ssn min="1" max="999999999" class="form-control" id="ssn" placeholder="SSN/ID">
      
     </div>
     <br />
@@ -67,12 +67,12 @@
     </div>
     <br /> 
         <div class="form-group">
-      <input type="text" #state class="form-control" id="state" placeholder="State">
+      <input type="text" #state maxlength="2" class="form-control" id="state" placeholder="State">
      
     </div>
     <br /> 
      <div class="form-group">
-      <input type="number" #zipcode class="form-control" id="zipcode" placeholder="Zip Code">
+      <input type="number" #zipcode min="1" max="99999" class="form-control" id="zipcode" placeholder="Zip Code">
      
     </div>
     <br /> 
@@ -81,14 +81,13 @@
      
     </div>
     <br /> 
-    <br /> 
       <div class="form-group">
-      <input type="number" #telephone class="form-control" id="telephone" placeholder="Telephone">
+      <input type="number" #telephone min="1" max="9999999999" class="form-control" id="telephone" placeholder="Telephone">
      
     </div>
     <br /> 
       <div class="form-group">
-      <input type="number" #hourlyrate class="form-control" id="hourlyrate" placeholder="Hourly Rate">
+      <input type="number" #hourlyrate min="1" class="form-control" id="hourlyrate" placeholder="Hourly Rate">
      
     </div>
     <br /> 

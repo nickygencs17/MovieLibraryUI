@@ -44,9 +44,11 @@
   address.value, city.value, state.value, creditcardnumber.value, zipcode.value, password.value,ssn.value, telephone.value, email.value, rating.value, type.value )">
     <div class="form-group">
        <div class="form-group">
-      <input type="number" #ssn class="form-control" id="ssn" placeholder="SSN/ID">
+      <input type="number" min="1" max="999999999" #ssn class="form-control" id="ssn" placeholder="SSN/ID">
+           <br />
      
     </div>
+        <br />
       <input type="text" #firstname class="form-control" id="firstname " placeholder="First Name">
      
     </div>
@@ -67,12 +69,12 @@
     </div>
     <br /> 
         <div class="form-group">
-      <input type="text" #state class="form-control" id="state" placeholder="State">
+      <input type="text" #state maxlength="2" class="form-control" id="state" placeholder="State">
      
     </div>
     <br /> 
      <div class="form-group">
-      <input type="number" #zipcode class="form-control" id="zipcode" placeholder="Zip Code">
+      <input type="number" #zipcode min="1" max="99999" class="form-control" id="zipcode" placeholder="Zip Code">
      
     </div>
     <br /> 
@@ -97,9 +99,10 @@
     </div>
      <br /> 
       <div class="form-group">
-      <input type="number" #rating class="form-control" id="rating" placeholder="Rating">
-     
-    </div>
+      <input type="number" #rating min="1" max="5" class="form-control" id="rating" placeholder="Rating">
+          <br />
+      </div>
+      <br />
       <div class="form-group" style="color: white">
           <input type="radio" #type name="type" value="Limited"> Limited<br>
           <input type="radio" #type  name="type" value="Unlimited-1"> Unlimited-1<br>
